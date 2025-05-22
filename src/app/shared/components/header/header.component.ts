@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,36 +8,56 @@ import { CommonModule } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit { // Implement AfterViewInit
+
   isMobileMenuOpen = false;
   isAboutFlyoutOpen = false;
   isMobileAboutSubMenuOpen = false;
 
+  // Get direct references to template elements using @ViewChild
+  @ViewChild('mobileMenuButton') mobileMenuButton!: ElementRef;
+  @ViewChild('mobileMenuContent') mobileMenuContent!: ElementRef;
+
+  @ViewChild('aboutFlyoutButton') aboutFlyoutButton!: ElementRef;
+  @ViewChild('aboutFlyoutContent') aboutFlyoutContent!: ElementRef;
+
+  @ViewChild('mobileAboutSubMenuButton') mobileAboutSubMenuButton!: ElementRef;
+  @ViewChild('mobileAboutSubMenuContent') mobileAboutSubMenuContent!: ElementRef;
+
   constructor(private elementRef: ElementRef) {}
+
+  // AfterViewInit ensures that the ViewChild references are available
+  ngAfterViewInit() {
+    // You can optionally add console logs here to verify the elements are found
+    // console.log('Mobile Menu Button:', this.mobileMenuButton?.nativeElement);
+    // console.log('About Flyout Content:', this.aboutFlyoutContent?.nativeElement);
+  }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    if (this.isMobileMenuOpen && !this.elementRef.nativeElement.contains(event.target as Node)) {
+    // Check for mobile menu
+    if (
+      this.isMobileMenuOpen &&
+      (!this.mobileMenuButton || !this.mobileMenuButton.nativeElement.contains(event.target as Node)) &&
+      (!this.mobileMenuContent || !this.mobileMenuContent.nativeElement.contains(event.target as Node))
+    ) {
       this.closeMobileMenu();
     }
-    const aboutFlyoutButton = this.elementRef.nativeElement.querySelector('#aboutFlyoutButton');
-    const aboutFlyoutContent = this.elementRef.nativeElement.querySelector('#aboutFlyoutContent');
 
+    // Check for desktop "About" flyout
     if (
       this.isAboutFlyoutOpen &&
-      !aboutFlyoutButton?.contains(event.target as Node) &&
-      !aboutFlyoutContent?.contains(event.target as Node)
+      (!this.aboutFlyoutButton || !this.aboutFlyoutButton.nativeElement.contains(event.target as Node)) &&
+      (!this.aboutFlyoutContent || !this.aboutFlyoutContent.nativeElement.contains(event.target as Node))
     ) {
       this.isAboutFlyoutOpen = false;
     }
 
-    const mobileAboutSubMenuButton = this.elementRef.nativeElement.querySelector('#mobileAboutSubMenuButton');
-    const mobileAboutSubMenuContent = this.elementRef.nativeElement.querySelector('#mobileAboutSubMenuContent');
-
+    // Check for mobile "About" sub-menu
     if (
       this.isMobileAboutSubMenuOpen &&
-      !mobileAboutSubMenuButton?.contains(event.target as Node) &&
-      !mobileAboutSubMenuContent?.contains(event.target as Node)
+      (!this.mobileAboutSubMenuButton || !this.mobileAboutSubMenuButton.nativeElement.contains(event.target as Node)) &&
+      (!this.mobileAboutSubMenuContent || !this.mobileAboutSubMenuContent.nativeElement.contains(event.target as Node))
     ) {
       this.isMobileAboutSubMenuOpen = false;
     }
@@ -47,6 +67,7 @@ export class HeaderComponent {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     if (this.isMobileMenuOpen) {
       this.isAboutFlyoutOpen = false;
+      this.isMobileAboutSubMenuOpen = false;
     }
   }
 
