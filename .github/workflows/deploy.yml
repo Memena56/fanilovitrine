@@ -37,7 +37,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp # Utilisez 'sftp' pour une connexion sécurisée. Changez à 'ftp' si SFTP n'est pas disponible.
-          # Port par défaut pour SFTP. Changez si votre serveur utilise un autre port.
           local-dir: ./dist/${{ env.APP_NAME }}/ # Chemin vers les fichiers compilés de votre application Angular
           server-dir: ${{ secrets.FTP_REMOTE_PATH }} # Le chemin sur votre serveur où les fichiers doivent être placés
           # Important : Si vous voulez que les fichiers existants soient remplacés, 'overwrite: true' est souvent le défaut.
