@@ -15,13 +15,18 @@ import { NewsService, News } from '../news/news.service';
 export class HomeComponent implements OnInit {
 
   newsItems: News[] = [];
+  events: Event[] = [];
   private readonly NEWS_LIMIT = 4;
 
-  constructor(private newsService: NewsService) { }
+  constructor(
+    private newsService: NewsService,
+    private eventsService: EventsService
+  ) { }
 
   ngOnInit(): void {
     console.log('Home Component initialized. Attempting to fetch news...');
     this.fetchAndDisplayLatestNews();
+    this.fetchEvents();
   }
 
   fetchAndDisplayLatestNews(): void {
@@ -47,6 +52,21 @@ export class HomeComponent implements OnInit {
       },
       complete: () => {
         console.log('News data fetching observable complete.');
+      }
+    });
+  }
+
+  fetchEvents(): void {
+    this.eventsService.getEvents().subscribe({
+      next: (data) => {
+        console.log('Successfully fetched events:', data);
+        this.events = data;
+      },
+      error: (error) => {
+        console.error('Error fetching events:', error);
+      },
+      complete: () => {
+        console.log('Events fetching complete.');
       }
     });
   }

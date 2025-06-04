@@ -33,17 +33,40 @@
     </div>
 </section>
 
-<section id="news" class="relative isolate overflow-hidden bg-white py-16 sm:py-16">
+<section id="news" class="relative isolate overflow-hidden bg-white pt-16 pb-8 sm:pt-16 sm:pb-8">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">VAOVAO</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-        <div *ngFor="let news of newsItems" class="relative h-64 sm:h-80 md:h-64 rounded-lg w-full">
-            <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
-            <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
-            <p class="text-white">{{ news.introduction }}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                <div *ngFor="let news of newsItems" class="relative h-64 sm:h-80 md:h-64 rounded-lg w-full">
+                    <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
+                    <p class="text-white">{{ news.introduction }}</p>
+                </div>
+            </div>
         </div>
-  </div>
-</div>
     </div>
+</section>
+
+<section id="events" class="relative isolate overflow-hidden bg-white pt-8 pb-16 sm:pt-8 sm:pb-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">NY ATONAY</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div *ngFor="let events of events" class="bg-[#1b2451] rounded-lg overflow-hidden md:h-[24rem] lg:h-[28rem] flex flex-col">
+        <div class="relative flex-shrink-0">
+          <img [src]="events.photo" [alt]="events.title" class="w-full h-48 object-cover" />
+        </div>
+        <div class="flex-grow bg-[#1b2451] px-4 py-3 md:pb-6 pb-4 flex flex-col justify-between">
+          <div>
+            <h3 class="text-white text-lg font-bold">{{ events.title }}</h3>
+            <div class="mt-2 overflow-hidden">
+              <p class="text-white text-sm hidden md:line-clamp-7 sm:block">
+                {{ events.introduction }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
