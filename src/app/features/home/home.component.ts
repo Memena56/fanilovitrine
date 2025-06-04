@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventsService, Event } from '../events/events.service';
 import { NewsService, News } from '../news/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,14 @@ import { NewsService, News } from '../news/news.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent implements OnInit {
+
+  counters = [
+  { label: 'totalMembers', value: 0, target: 40000 },
+  { label: 'dioceses', value: 0, target: 22 }
+  ];
+  animationDuration = 2000;
 
   newsItems: News[] = [];
   events: Event[] = [];
@@ -20,13 +28,32 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private newsService: NewsService,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     console.log('Home Component initialized. Attempting to fetch news...');
     this.fetchAndDisplayLatestNews();
     this.fetchEvents();
+    this.counters.forEach(counter => this.animateCounter(counter));
+  }
+
+  animateCounter(counter: { value: number; target: number }) {
+  const startTime = performance.now();
+  const duration = this.animationDuration;
+
+  const update = (currentTime: number) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    counter.value = Math.floor(progress * counter.target);
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  };
+
+  requestAnimationFrame(update);
   }
 
   fetchAndDisplayLatestNews(): void {
@@ -69,5 +96,9 @@ export class HomeComponent implements OnInit {
         console.log('Events fetching complete.');
       }
     });
+  }
+
+  goToNewsDetail(id: string) {
+    this.router.navigate(['/vaovao', id]);
   }
 }

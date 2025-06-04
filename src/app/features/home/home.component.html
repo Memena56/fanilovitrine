@@ -19,16 +19,17 @@
             <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
                 <div class="flex flex-col-reverse gap-1">
                 <dt class="text-base/7 text-gray-300">Mpikambana</dt>
-                <dd class="text-4xl font-semibold tracking-tight text-white">40.000</dd>
+                <dd class="text-4xl font-semibold tracking-tight text-white">{{ counters[0].value | number }}</dd>
                 </div>
                 <div class="flex flex-col-reverse gap-1">
                 <dt class="text-base/7 text-gray-300">Diosezy</dt>
-                <dd class="text-4xl font-semibold tracking-tight text-white">22</dd>
+                <dd class="text-4xl font-semibold tracking-tight text-white">{{ counters[1].value }}</dd>
                 </div>
             </dl>
         </div>
-        <button class="mt-10 bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition-colors flex items-center gap-2 font-semibold mx-auto">
-            Hiditra ho mpikambana
+        <button class="mt-10 bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition-colors flex items-center gap-2 font-semibold mx-auto
+         animate-[float_3s_ease-in-out_infinite]">
+            Hiditra ho mpikambana >
         </button>
     </div>
 </section>
@@ -37,20 +38,26 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">VAOVAO</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                <div *ngFor="let news of newsItems" class="relative h-64 sm:h-80 md:h-64 rounded-lg w-full">
-                    <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
-                    <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
-                    <p class="text-white">{{ news.introduction }}</p>
+                <div  *ngFor="let news of newsItems"  class="relative h-64 sm:h-80 md:h-64 rounded-lg w-full transform transition duration-500 ease-in-out motion-safe:hover:scale-[1.02] hover:shadow-xl cursor-pointer"
+                (click)="goToNewsDetail(news._id)"
+                >
+                    <img
+                        [src]="news.photo"
+                        [alt]="news.title"
+                        class="absolute inset-0 size-full object-cover object-center rounded-lg"
+                    />
+                    <div   class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end rounded-lg">
+                        <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
+                        <p class="text-white">{{ news.introduction }}</p>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </section>
 
 <section id="events" class="relative isolate overflow-hidden bg-[#F9B000] pt-8 pb-16 sm:pt-8 sm:pb-16">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">NY ATONAY</h2>
+    <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">NY ATAONAY</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div *ngFor="let events of events" class="bg-[#1b2451] rounded-lg overflow-hidden md:h-[24rem] lg:h-[28rem] flex flex-col">
         <div class="relative flex-shrink-0">
