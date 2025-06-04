@@ -27,26 +27,21 @@
                 </div>
             </dl>
         </div>
-        <button class="mt-10 bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition-colors flex items-center gap-2 font-semibold mx-auto animate-float">
+        <button class="mt-10 bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition-colors flex items-center gap-2 font-semibold mx-auto">
             Hiditra ho mpikambana
         </button>
     </div>
 </section>
 
 <section id="news" class="relative isolate overflow-hidden bg-white py-16 sm:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">VAOVAO</h2>
         <div class="grid md:grid-cols-2 gap-8">
             <div *ngFor="let news of newsItems" class="relative h-64 rounded-lg overflow-hidden">
-                <img
-                [src]="news.photo"
-                [alt]="news.title"
-                fill
-                class="object-cover"
-                />
+                <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center" />
                 <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
-                <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
-                <p class="text-white">{{ news.introduction }}</p>
+                    <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
+                    <p class="text-white">{{ news.introduction }}</p>
                 </div>
             </div>
         </div>
