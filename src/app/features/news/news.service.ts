@@ -35,15 +35,16 @@ export class NewsService {
     return this.http.get<News[]>(`${this.newsUrl}/latest`);
   }
 
-  getPaginatedNews(page: number, limit: number, category?: string[]): Observable<any> {
-    let url = `${this.newsUrl}?page=${page}&limit=${limit}`;
-
-    if (category && category.length > 0){
-      const categoryParams = category.map(c => `category=${encodeURIComponent(c)}`).join('&');
-      url += `&${categoryParams}`;
-    }
-    return this.http.get<any>(url);
+  getPaginatedNews(page: number, limit: number, categories?: string[]): Observable<any> {
+  let url = `${this.newsUrl}?page=${page}&limit=${limit}`;
+  if (categories && categories.length > 0) {
+    categories.forEach(cat => {
+      url += `&category=${encodeURIComponent(cat)}`;
+    });
   }
+  return this.http.get<any>(url);
+}
+
 
   getNew(id: string): Observable<News>{
     return this.http.get<News>(`${this.newsUrl}/${id}`);

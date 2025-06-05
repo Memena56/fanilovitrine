@@ -38,7 +38,7 @@ export class NewsComponent implements OnInit{
     this.newsService.getPaginatedNews(
       this.currentPage,
       this.itemsPerPage,
-      this.selectedCategory.length?this.selectedCategory:undefined
+      this.selectedCategory
     )    .subscribe(res =>{
       this.newsList = res.data;
       this.totalPages = res.lastPage;
@@ -47,7 +47,7 @@ export class NewsComponent implements OnInit{
 
   filterByCategory(category: string): void {
     const index = this.selectedCategory.indexOf(category);
-    if (index > 1) {
+    if (index > -1) {
       this.selectedCategory.splice(index, 1);
     } else {
       this.selectedCategory.push(category);
