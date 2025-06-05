@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
 
   newsItems: News[] = [];
   events: Event[] = [];
-  private readonly NEWS_LIMIT = 4;
 
   constructor(
     private newsService: NewsService,
@@ -57,31 +56,19 @@ export class HomeComponent implements OnInit {
   }
 
   fetchAndDisplayLatestNews(): void {
-    this.newsService.getNews().subscribe({
-      next: (data) => {
-        console.log('Successfully fetched data from backend:', data);
-
-        // Sort the news by date in descending order
-        const sortedNews = data.sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-          return dateB.getTime() - dateA.getTime();
-        });
-
-        this.newsItems = sortedNews.slice(0, this.NEWS_LIMIT);
-
-        console.log(`Displaying ${this.newsItems.length} latest news items.`);
-        console.log('Connection to NestJS backend appears to be working.');
-      },
-      error: (error) => {
-        console.error('Error fetching data from backend:', error);
-        console.error('Connection test failed. Check backend server, CORS, and URL.');
-      },
-      complete: () => {
-        console.log('News data fetching observable complete.');
-      }
-    });
-  }
+  this.newsService.getLatestNews().subscribe({
+    next: (data) => {
+      console.log('Successfully fetched latest news:', data);
+      this.newsItems = data;
+    },
+    error: (error) => {
+      console.error('Error fetching latest news:', error);
+    },
+    complete: () => {
+      console.log('Latest news data fetching complete.');
+    }
+  });
+}
 
   fetchEvents(): void {
     this.eventsService.getEvents().subscribe({

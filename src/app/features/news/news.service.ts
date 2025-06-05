@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, ObservableLike } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export interface News {
@@ -11,6 +11,7 @@ export interface News {
   date: string;
   photo: string;
   otherphoto?: [string];
+  category?: string[];
 }
 
 @Injectable({
@@ -28,6 +29,14 @@ export class NewsService {
 
   getNew(id: string): Observable<News>{
     return this.http.get<News>(`${this.newsUrl}/${id}`);
+  }
+
+  getNewsByCategory(category: string): Observable<News[]>{
+    return this.http.get<News[]>(`${this.newsUrl}/category/${category}`);
+  }
+
+  getLatestNews(): Observable<News[]> {
+    return this.http.get<News[]>(`${this.newsUrl}/latest`);
   }
 
   createNews(newsData: Partial<News>): Observable<News> {

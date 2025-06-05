@@ -1,77 +1,64 @@
-<section class="relative isolate overflow-hidden bg-gray-900 py-20 sm:py-28">
-    <img src="header.webp" alt="" class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center">
-    <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
-        <div class="aspect-1097/845 w-[68.5625rem] bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+<section class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+  <img src="header.webp" alt="" class="absolute inset-0 -z-10 size-full object-cover object-center">
+  <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0" aria-hidden="true">
+    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+  </div>
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">Iza moa izahay?</h2>
+      <p class="mt-6 text-lg sm:text-xl text-gray-300 leading-relaxed">
+        Ny Fanilon'I Madagasikara dia firohotam-panabeazana ho an'ny zazavavy katôlika mampihatra ny foto-kevitra skotisma
+        araka ny namoronan'i Baden Powell azy.
+      </p>
     </div>
-    <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
-        <div class="aspect-1097/845 w-[68.5625rem] bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-    </div>
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:mx-0">
-            <h2 class="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Iza moa izahay?</h2>
-            <p class="mt-8 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
-                Ny Fanilon'I Madagasikara dia firohotam-panabeazana ho an'ny zazavavy katôlika mampihatra ny foto-kevitra skotisma
-                araka ny namoronan'i Baden Powell azy.
-            </p>
-            </div>
-        <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-
-            <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="flex flex-col-reverse gap-1">
-                <dt class="text-base/7 text-gray-300">Mpikambana</dt>
-                <dd class="text-4xl font-semibold tracking-tight text-white">{{ counters[0].value | number }}</dd>
-                </div>
-                <div class="flex flex-col-reverse gap-1">
-                <dt class="text-base/7 text-gray-300">Diosezy</dt>
-                <dd class="text-4xl font-semibold tracking-tight text-white">{{ counters[1].value }}</dd>
-                </div>
-            </dl>
+    <div class="mx-auto mt-12 max-w-2xl lg:mx-0 lg:max-w-none">
+      <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="flex flex-col-reverse gap-1">
+          <dt class="text-base text-gray-300">Mpikambana</dt>
+          <dd class="text-4xl font-bold text-white">{{ counters[0].value | number }}</dd>
         </div>
-        <button class="mt-10 bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition-colors flex items-center gap-2 font-semibold mx-auto
-         animate-[float_3s_ease-in-out_infinite]">
-            Hiditra ho mpikambana >
-        </button>
+        <div class="flex flex-col-reverse gap-1">
+          <dt class="text-base text-gray-300">Diosezy</dt>
+          <dd class="text-4xl font-bold text-white">{{ counters[1].value }}</dd>
+        </div>
+      </dl>
     </div>
+    <div class="mt-10 text-center">
+      <button class="bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition font-semibold shadow-md animate-[float_3s_ease-in-out_infinite]">
+        Hiditra ho mpikambana
+      </button>
+    </div>
+  </div>
 </section>
 
-<section id="news" class="relative isolate overflow-hidden bg-white pt-16 pb-8 sm:pt-16 sm:pb-8">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">VAOVAO</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                <div  *ngFor="let news of newsItems"  class="relative h-64 sm:h-80 md:h-64 rounded-lg w-full transform transition duration-500 ease-in-out motion-safe:hover:scale-[1.02] hover:shadow-xl cursor-pointer"
-                (click)="goToNewsDetail(news._id)"
-                >
-                    <img
-                        [src]="news.photo"
-                        [alt]="news.title"
-                        class="absolute inset-0 size-full object-cover object-center rounded-lg"
-                    />
-                    <div   class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end rounded-lg">
-                        <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
-                        <p class="text-white">{{ news.introduction }}</p>
-                    </div>
-                </div>
+<section id="news" class="relative isolate overflow-hidden bg-white pt-20 pb-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-center text-[#2A255E] mb-12">Vaovao</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div *ngFor="let news of newsItems" class="relative h-64 sm:h-80 md:h-64 rounded-xl overflow-hidden cursor-pointer hover:shadow-xl transition-transform duration-300 ease-in-out hover:scale-[1.02]" (click)="goToNewsDetail(news._id)">
+        <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center rounded-xl">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
+          <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
+          <p class="text-white text-sm mt-1">{{ news.introduction }}</p>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section id="events" class="relative isolate overflow-hidden bg-[#F9B000] pt-8 pb-16 sm:pt-8 sm:pb-16">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">NY ATAONAY</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div *ngFor="let events of events" class="bg-[#1b2451] rounded-lg overflow-hidden md:h-[24rem] lg:h-[28rem] flex flex-col">
-        <div class="relative flex-shrink-0">
+      <div *ngFor="let events of events" class="bg-[#1b2451] rounded-lg overflow-hidden flex flex-col h-full min-h-[24rem] shadow-md transition hover:shadow-xl">
+        <div class="relative">
           <img [src]="events.photo" [alt]="events.title" class="w-full h-48 object-cover" />
         </div>
-        <div class="flex-grow bg-[#1b2451] px-4 py-3 md:pb-6 pb-4 flex flex-col justify-between">
-          <div>
-            <h3 class="text-white text-lg font-bold">{{ events.title }}</h3>
-            <div class="mt-2 overflow-hidden">
-              <p class="text-white text-sm hidden md:line-clamp-7 sm:block">
-                {{ events.introduction }}
-              </p>
-            </div>
-          </div>
+        <div class="px-4 py-3 flex-grow">
+          <h3 class="text-white text-lg font-bold leading-tight mb-2">{{ events.title }}</h3>
+          <p class="text-white text-sm line-clamp-5">
+            {{ events.introduction }}
+          </p>
         </div>
       </div>
     </div>

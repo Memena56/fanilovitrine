@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -13,6 +13,7 @@ export class HeaderComponent implements AfterViewInit { // Implement AfterViewIn
   isMobileMenuOpen = false;
   isAboutFlyoutOpen = false;
   isMobileAboutSubMenuOpen = false;
+  currentRoute = '';
 
   // Get direct references to template elements using @ViewChild
   @ViewChild('mobileMenuButton') mobileMenuButton!: ElementRef;
@@ -24,7 +25,11 @@ export class HeaderComponent implements AfterViewInit { // Implement AfterViewIn
   @ViewChild('mobileAboutSubMenuButton') mobileAboutSubMenuButton!: ElementRef;
   @ViewChild('mobileAboutSubMenuContent') mobileAboutSubMenuContent!: ElementRef;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private router: Router) {
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.router.url;
+    });
+  }
 
   // AfterViewInit ensures that the ViewChild references are available
   ngAfterViewInit() {
