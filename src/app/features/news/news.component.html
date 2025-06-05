@@ -15,20 +15,20 @@
                 <input
                 type="checkbox"
                 class="form-checkbox text-indigo-600 rounded"
-                [checked]="selectedCategory === cat"
+                [checked]="selectedCategory.includes(cat)"
                 (change)="filterByCategory(cat)" />
                 <label class="text-gray-700 cursor-pointer select-none">{{ cat }}</label>
             </div>
 
             <button type="button"
                 (click)="clearFilters()"
-                    class="mt-4 text-sm text-indigo-600 hover:underline">
+                    class="mt-4 text-sm text-indigo-600 cursor pointer hover:underline">
             Fafàna ny sivana
             </button>
 
             <!-- Bouton ajout news -->
             <a routerLink="/news/add"
-                class="mt-6 lg:mt-10 px-4 py-2 bg-indigo-600 text-white rounded text-center hover:bg-indigo-500 w-full lg:w-auto text-sm">
+                class="mt-6 lg:mt-10 px-4 py-2 bg-indigo-600 text-white rounded text-center cursor-pointer hover:bg-indigo-500 w-full lg:w-auto text-sm">
                 Hampiditra vaovao
             </a>
         </form>

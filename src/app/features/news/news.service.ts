@@ -35,9 +35,13 @@ export class NewsService {
     return this.http.get<News[]>(`${this.newsUrl}/latest`);
   }
 
-  getPaginatedNews(page: number, limit: number, category?: string): Observable<any> {
+  getPaginatedNews(page: number, limit: number, category?: string[]): Observable<any> {
     let url = `${this.newsUrl}?page=${page}&limit=${limit}`;
-    if (category) url += `&category=${category}`;
+
+    if (category && category.length > 0){
+      const categoryParams = category.map(c => `category=${encodeURIComponent(c)}`).join('&');
+      url += `&${categoryParams}`;
+    }
     return this.http.get<any>(url);
   }
 

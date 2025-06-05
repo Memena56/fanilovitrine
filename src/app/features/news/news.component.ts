@@ -19,7 +19,7 @@ export class NewsComponent implements OnInit{
   categories: string[] = ['Fiofanana', 'Fifandraisana', 'Fanabeazana', 'Fitantanana', 'Iombonana', 'Fampivoarana'];
   newsList: News[] | null = null;
 
-  selectedCategory: string | null = null;
+  selectedCategory: string[] = [];
 
   currentPage: number = 1;
   totalPages: number = 1;
@@ -35,25 +35,29 @@ export class NewsComponent implements OnInit{
   }
 
   loadNews() {
-    this.newsService.getPaginatedNews(this.currentPage, this.itemsPerPage, this.selectedCategory || undefined)
-    .subscribe(res =>{
+    this.newsService.getPaginatedNews(
+      this.currentPage,
+      this.itemsPerPage,
+      this.selectedCategory.length?this.selectedCategory:undefined
+    )    .subscribe(res =>{
       this.newsList = res.data;
       this.totalPages = res.lastPage;
     });
   }
 
   filterByCategory(category: string): void {
-    if (this.selectedCategory === category) {
-      this.selectedCategory = null;
+    const index = this.selectedCategory.indexOf(category);
+    if (index > 1) {
+      this.selectedCategory.splice(index, 1);
     } else {
-      this.selectedCategory = category;
+      this.selectedCategory.push(category);
     }
     this.currentPage = 1;
     this.loadNews();
   }
 
   clearFilters() {
-    this.selectedCategory = null;
+    this.selectedCategory = [];
     this.currentPage = 1;
     this.loadNews();
   }
