@@ -16,7 +16,7 @@ jobs:
       - name: Configurer Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.11.0' # Utilisez la version de Node.js de votre projet
+          node-version: '20.19.0' # Utilisez la version de Node.js de votre projet
 
       - name: Installer les dépendances Angular CLI et du projet
         run: |
