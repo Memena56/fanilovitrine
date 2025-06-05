@@ -40,7 +40,7 @@
             <!-- Grille responsive -->
             <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             <div *ngFor="let news of newsList"
-                class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                class="border rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition-transform duration-300 ease-in-out hover:scale-[1.02]" (click)="goToNewsDetail(news._id)">
                 <img [src]="news.photo" alt="{{ news.title }}" class="h-48 w-full object-cover" />
                 <div class="p-4">
                 <p class="text-sm text-indigo-600 font-semibold mb-1">{{ news.category?.join(', ') }}</p>

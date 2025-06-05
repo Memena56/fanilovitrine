@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService, News } from '../news/news.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -24,7 +25,10 @@ export class NewsComponent implements OnInit{
   totalPages: number = 1;
   itemsPerPage: number = 6;
 
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadNews();
@@ -61,10 +65,14 @@ export class NewsComponent implements OnInit{
   }
 }
 
-prevPage() {
-  if (this.currentPage > 1) {
-    this.currentPage--;
-    this.loadNews();
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadNews();
+    }
   }
-}
+
+  goToNewsDetail(id: string) {
+    this.router.navigate(['/vaovao', id]);
+  }
 }
