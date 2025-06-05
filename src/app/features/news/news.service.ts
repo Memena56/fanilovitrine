@@ -27,16 +27,22 @@ export class NewsService {
     return this.http.get<News[]>(this.newsUrl);
   }
 
-  getNew(id: string): Observable<News>{
-    return this.http.get<News>(`${this.newsUrl}/${id}`);
-  }
-
   getNewsByCategory(category: string): Observable<News[]>{
     return this.http.get<News[]>(`${this.newsUrl}/category/${category}`);
   }
 
   getLatestNews(): Observable<News[]> {
     return this.http.get<News[]>(`${this.newsUrl}/latest`);
+  }
+
+  getPaginatedNews(page: number, limit: number, category?: string): Observable<any> {
+    let url = `${this.newsUrl}?page=${page}&limit=${limit}`;
+    if (category) url += `&category=${category}`;
+    return this.http.get<any>(url);
+  }
+
+  getNew(id: string): Observable<News>{
+    return this.http.get<News>(`${this.newsUrl}/${id}`);
   }
 
   createNews(newsData: Partial<News>): Observable<News> {
