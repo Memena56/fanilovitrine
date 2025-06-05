@@ -88,4 +88,8 @@ export class HomeComponent implements OnInit {
   goToNewsDetail(id: string) {
     this.router.navigate(['/vaovao', id]);
   }
+
+  goToEventDetail(id: string){
+    this.router.navigate(['/hetsika', id]);
+  }
 }
