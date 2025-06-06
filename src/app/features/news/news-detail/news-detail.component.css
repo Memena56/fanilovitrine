@@ -1,0 +1,110 @@
+    .prose {
+    font-family: 'Segoe UI', sans-serif;
+    color: #1F2937;
+    line-height: 1.75;
+    font-size: 1.125rem;
+    }
+
+    /* Titres */
+    .prose h1,
+    .prose h2,
+    .prose h3 {
+    color: #2A255E;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    }
+
+    .prose h1 {
+    font-size: 2.25rem;
+    }
+
+    .prose h2 {
+    font-size: 1.75rem;
+    padding-bottom: 0.25rem;
+    }
+
+    .prose h3 {
+    font-size: 1.375rem;
+    font-style: italic;
+    }
+
+    /* Paragraphes */
+    .prose p {
+    margin-bottom: 1rem;
+    color: #1F2937;
+    }
+
+    /* Liens */
+    .prose a {
+    color: #1D4ED8;
+    text-decoration: underline;
+    }
+
+    .prose a:hover {
+    color: #2563EB;
+    }
+
+    /* Listes */
+    .prose ul,
+    .prose ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .prose ul li::marker {
+    color: #047857;
+    }
+
+    .prose li {
+    margin-bottom: 0.5rem;
+    }
+
+    /* Blockquotes */
+    .prose blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background-color: #F9FAFB;
+    border-left: 4px solid #2A255E;
+    font-style: italic;
+    color: #4B5563;
+    }
+
+    /* Images dans le contenu si un jour tu en ajoutes */
+    .prose img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Code (inline ou bloc) */
+    .prose code {
+    background-color: #F3F4F6;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    font-size: 0.95rem;
+    }
+
+    /* Tableau */
+    .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    }
+
+    .prose th,
+    .prose td {
+    border: 1px solid #E5E7EB;
+    padding: 0.75rem;
+    text-align: left;
+    }
+
+    .prose th {
+    background-color: #F3F4F6;
+    color: #2A255E;
+    font-weight: 600;
+    }

@@ -10,7 +10,7 @@ export interface News {
   content: string;
   date: string;
   photo: string;
-  otherphoto?: [string];
+  othersPhotos?: [string];
   category?: string[];
 }
 
@@ -44,7 +44,6 @@ export class NewsService {
   }
   return this.http.get<any>(url);
 }
-
 
   getNew(id: string): Observable<News>{
     return this.http.get<News>(`${this.newsUrl}/${id}`);

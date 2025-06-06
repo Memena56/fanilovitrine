@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'ngx-lightbox/lightbox.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -10,4 +11,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   50% {
     transform: translateY(-6px);
   }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
 }

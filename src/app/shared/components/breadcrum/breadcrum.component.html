@@ -1,0 +1,11 @@
+    <nav aria-label="breadcrumb" class="breadcrumb px-4 py-2 text-sm text-gray-600 bg-gray-50 border-b">
+    <ol class="list-reset flex">
+        <li *ngFor="let crumb of breadcrumbs; let last = last" class="flex items-center">
+        <a *ngIf="!last" [routerLink]="crumb.url" class="text-indigo-600 hover:underline">
+            {{ crumb.label }}
+        </a>
+        <span *ngIf="last" class="font-semibold text-gray-900">{{ crumb.label }}</span>
+        <span *ngIf="!last" class="mx-2">/</span>
+        </li>
+    </ol>
+    </nav>

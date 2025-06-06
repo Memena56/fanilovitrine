@@ -1,20 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { BreadcrumbComponent } from './shared/components/breadcrum/breadcrum.component';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbComponent,
+    CommonModule
 ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent{
   title = 'fanilovitrine';
+  showBreadCrumb = true;
 
-  constructor() {}
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      const hiddenRoutes = ['', 'ivotoerana'];
+  const currentRoute = event.urlAfterRedirects.replace(/^\/+/, '');
+
+  this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));
+
+  console.log('Route:', currentRoute, 'Show breadcrumb:', this.showBreadCrumb);
+    });
+  }
 }
