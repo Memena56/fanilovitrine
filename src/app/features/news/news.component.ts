@@ -76,8 +76,8 @@ export class NewsComponent implements OnInit{
     }
   }
 
-  goToNewsDetail(id: string) {
-    this.router.navigate(['/vaovao', id]);
+  goToNewsDetail(slug: string) {
+    this.router.navigate(['/vaovao', slug]);
   }
 
   trackByNewsId(index: number, item: any): string | number {

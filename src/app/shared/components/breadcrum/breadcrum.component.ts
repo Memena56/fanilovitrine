@@ -60,6 +60,9 @@ export class BreadcrumbComponent implements OnInit {
 
   private capitalize(s: string): string {
     if (!s) return '';
-    return s.charAt(0).toUpperCase() + s.slice(1);
+    return s
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
   }
 }

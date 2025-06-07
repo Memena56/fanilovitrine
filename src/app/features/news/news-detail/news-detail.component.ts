@@ -29,9 +29,9 @@ export class NewsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if(id) {
-      this.newsService.getNew(id).subscribe((data) => {
+    const slug = this.route.snapshot.paramMap.get('slug');
+    if(slug) {
+      this.newsService.getNew(slug).subscribe((data) => {
         this.newsItem = data;
         this.safeContent = this.sanitizer.bypassSecurityTrustHtml(data.content);
         this.prepareAlbum(data.othersPhotos || []);
