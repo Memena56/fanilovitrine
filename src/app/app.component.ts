@@ -6,6 +6,7 @@ import { BreadcrumbComponent } from './shared/components/breadcrum/breadcrum.com
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     FooterComponent,
     BreadcrumbComponent,
-    CommonModule
+    CommonModule,
+    RouterModule
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -27,7 +29,7 @@ export class AppComponent{
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      const hiddenRoutes = ['', 'ivotoerana'];
+      const hiddenRoutes = ['', 'ivotoerana', '404'];
   const currentRoute = event.urlAfterRedirects.replace(/^\/+/, '');
 
   this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));

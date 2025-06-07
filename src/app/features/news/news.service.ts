@@ -46,8 +46,8 @@ export class NewsService {
   return this.http.get<any>(url);
 }
 
-  getNew(id: string): Observable<News>{
-    return this.http.get<News>(`${this.newsUrl}/${id}`);
+  getNew(slug: string): Observable<News>{
+    return this.http.get<News>(`${this.newsUrl}/${slug}`);
   }
 
   createNews(newsData: Partial<News>): Observable<News> {

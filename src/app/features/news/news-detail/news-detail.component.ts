@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Lightbox } from 'ngx-lightbox';
 import { LightboxModule } from 'ngx-lightbox';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-detail',
@@ -25,17 +26,27 @@ export class NewsDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private newsService: NewsService,
     private sanitizer: DomSanitizer,
-    private lightbox: Lightbox
+    private lightbox: Lightbox,
+    private router: Router
   ) {}
 
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug');
     if(slug) {
-      this.newsService.getNew(slug).subscribe((data) => {
-        this.newsItem = data;
-        this.safeContent = this.sanitizer.bypassSecurityTrustHtml(data.content);
-        this.prepareAlbum(data.othersPhotos || []);
-      });
+      this.newsService.getNew(slug).subscribe({
+      next: (data) => {
+        if (data) {
+          this.newsItem = data;
+          this.safeContent = this.sanitizer.bypassSecurityTrustHtml(data.content || '');
+          this.prepareAlbum(data.othersPhotos || []);
+        } else {
+          this.router.navigate(['/404']);
+        }
+      },
+      error: () => {
+        this.router.navigate(['/404']);
+      }
+    });
     }
   }
 

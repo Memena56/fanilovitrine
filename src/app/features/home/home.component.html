@@ -38,13 +38,20 @@
       <div *ngFor="let news of newsItems" class="relative h-64 sm:h-80 md:h-64 rounded-xl overflow-hidden cursor-pointer
             transition-transform duration-300 ease-in-out
             hover:scale-[1.02] active:scale-[1.02] focus:scale-[1.02]
-            hover:shadow-xl active:shadow-xl focus:shadow-xl" (click)="goToNewsDetail(news._id)">
+            hover:shadow-xl active:shadow-xl focus:shadow-xl" (click)="goToNewsDetail(news.slug)">
         <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center rounded-xl">
         <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
           <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
           <p class="text-white text-sm mt-1">{{ news.introduction }}</p>
         </div>
       </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="vaovao" class="inline-block bg-[#2A255E] text-white px-6 py-3 rounded-full font-medium text-base shadow-md
+          cursor-pointer hover:bg-[#3b3795] transition-colors duration-300">
+        Vaovao rehetra
+      </a>
     </div>
   </div>
 </section>
