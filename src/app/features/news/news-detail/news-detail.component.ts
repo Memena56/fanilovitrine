@@ -21,6 +21,7 @@ export class NewsDetailComponent implements OnInit {
   newsItem!: News;
   safeContent!: SafeHtml;
   album: Array<{ src: string; thumb: string; caption?: string }> = [];
+  relatedNews: News[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,14 +32,22 @@ export class NewsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const slug = this.route.snapshot.paramMap.get('slug');
+    this.route.paramMap.subscribe(params => {
+      const slug = params.get('slug');
     if(slug) {
-      this.newsService.getNew(slug).subscribe({
+      this.loadNews(slug);
+    }
+    });
+  }
+
+  loadNews(slug: string) {
+    this.newsService.getNew(slug).subscribe({
       next: (data) => {
-        if (data) {
+        if(data) {
           this.newsItem = data;
           this.safeContent = this.sanitizer.bypassSecurityTrustHtml(data.content || '');
           this.prepareAlbum(data.othersPhotos || []);
+          this.loadRelatedNews(data);
         } else {
           this.router.navigate(['/404']);
         }
@@ -47,7 +56,6 @@ export class NewsDetailComponent implements OnInit {
         this.router.navigate(['/404']);
       }
     });
-    }
   }
 
   prepareAlbum(photos: string[]) {
@@ -57,11 +65,26 @@ export class NewsDetailComponent implements OnInit {
     }));
   }
 
+  loadRelatedNews(currentNews: News) {
+    const category = currentNews.category?.[0];
+    if(category) {
+      this.newsService.getNewsByCategory(category).subscribe(newsList => {
+        this.relatedNews = newsList
+        .filter(news => news.slug !== currentNews.slug)
+        .slice(0, 4);
+      });
+    }
+  }
+
   openLightbox(index: number): void {
     this.lightbox.open(this.album, index);
   }
 
   closeLightbox(): void {
     this.lightbox.close();
+  }
+
+  goToNewsDetail(slug: string) {
+    this.router.navigate(['/vaovao', slug]);
   }
 }
