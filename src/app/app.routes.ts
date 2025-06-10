@@ -8,5 +8,6 @@ export const routes: Routes = [
     { path: 'hetsika', loadChildren: () => import('./features/events/events.routes').then(m => m.eventsRoutes) },
     { path: 'shop', loadChildren: () => import('./features/articles/articles.routes').then(m => m.articlesRoutes) },
     { path: 'vaovao', loadChildren: () => import('./features/news/news.routes').then(m=> m.newsRoutes)},
+    { path: 'login', loadComponent: () => import('./features/login/login.component').then(m => m.LoginComponent) },
     { path: '**', component: NotFoundComponent}
 ];
