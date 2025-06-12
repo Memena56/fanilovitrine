@@ -23,7 +23,7 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe({
       next: (res) => {
         localStorage.setItem('access_token', res.access_token);
-        this.router.navigate(['/hampiditra-vaovao']);
+        this.router.navigate(['vaovao', 'dashboard']);
       },
       error: () => {
         this.error = 'Login ou mot de passe incorrect';

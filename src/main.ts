@@ -1,11 +1,12 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter, ExtraOptions, withRouterConfig } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import localMg from '@angular/common/locales/mg';
 import { routes} from './app/app.routes';
 import { appConfig } from './app/app.config';
+import { authInterceptor } from './app/core/auth.interceptor';
 
 registerLocaleData(localMg);
 
@@ -16,7 +17,7 @@ const routerOptions: ExtraOptions = {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideRouter(routes, withRouterConfig(routerOptions)),
     ...appConfig.providers
   ]

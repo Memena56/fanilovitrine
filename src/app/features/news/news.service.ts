@@ -11,7 +11,7 @@ export interface News {
   content: string;
   date: string;
   photo: string;
-  othersPhotos?: [string];
+  othersPhotos?: string[];
   category?: string[];
 }
 
