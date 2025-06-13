@@ -3,6 +3,7 @@ import { NewsService, News } from '../news/news.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   standalone: true,
@@ -27,6 +28,7 @@ export class NewsComponent implements OnInit{
 
   constructor(
     private newsService: NewsService,
+    private auth: AuthService,
     private router: Router
   ) {}
 
@@ -83,5 +85,14 @@ export class NewsComponent implements OnInit{
   trackByNewsId(index: number, item: any): string | number {
   return item.id || item._id || index;
   }
+
+  goToDashboardOrLogin() {
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate(['/vaovao/dashboard']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
 
 }

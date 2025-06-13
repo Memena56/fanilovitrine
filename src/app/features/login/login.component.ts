@@ -16,18 +16,25 @@ export class LoginComponent {
   password = '';
   error = '';
   passwordVisible = false;
+  isLoading = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
+    this.isLoading = true;
+    this.error = '';
     this.authService.login(this.username, this.password).subscribe({
       next: (res) => {
         localStorage.setItem('access_token', res.access_token);
         this.router.navigate(['vaovao', 'dashboard']);
       },
       error: () => {
-        this.error = 'Login ou mot de passe incorrect';
+        this.error = 'Misy diso ny anarana na ny teny miafina';
+        this.isLoading = false;
       },
+      complete: () => {
+        this.isLoading = false;
+      }
     });
   }
 

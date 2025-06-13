@@ -29,7 +29,7 @@ export class AppComponent{
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      const hiddenRoutes = ['', 'ivotoerana', '404'];
+      const hiddenRoutes = ['', 'ivotoerana', '404', 'login'];
   const currentRoute = event.urlAfterRedirects.replace(/^\/+/, '');
 
   this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));
