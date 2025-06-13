@@ -44,7 +44,7 @@ export class BreadcrumbComponent implements OnInit {
         url += `/${routeURL}`;
       }
 
-      if (routeURL === '' || routeURL === 'ivotoerana' || routeURL === '404' || routeURL === 'login') {
+      if (routeURL === '' || routeURL === 'ivotoerana' || routeURL === '404' || routeURL === 'login' || routeURL === 'vaovao/dashboard') {
         return breadcrumbs;
       }
 

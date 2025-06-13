@@ -24,17 +24,19 @@ import { RouterModule } from '@angular/router';
 export class AppComponent{
   title = 'fanilovitrine';
   showBreadCrumb = true;
+  showHeaderFooter = true;
 
   constructor(private router: Router) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      const hiddenRoutes = ['', 'ivotoerana', '404', 'login'];
-  const currentRoute = event.urlAfterRedirects.replace(/^\/+/, '');
+      const hiddenRoutes = ['', 'ivotoerana', '404', 'login', 'vaovao/dashboard'];
+      const currentRoute = event.urlAfterRedirects.replace(/^\/+/, '');
 
-  this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));
+      this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));
 
-  console.log('Route:', currentRoute, 'Show breadcrumb:', this.showBreadCrumb);
+      this.showHeaderFooter = ! currentRoute.startsWith('vaovao/dashboard');
+
     });
   }
 }
