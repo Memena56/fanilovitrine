@@ -17,7 +17,7 @@ import { AuthService } from '../../core/auth.service';
 })
 export class NewsComponent implements OnInit{
 
-  categories: string[] = ['Fiofanana', 'Fifandraisana', 'Fanabeazana', 'Fitantanana', 'Iombonana', 'Fampivoarana'];
+  categories: string[] = ['Fanabeazana', 'Fampivoarana', 'Fifandraisana', 'Fiofanana', 'Fitantanana', 'Iombonana'];
   newsList: News[] | null = null;
 
   selectedCategory: string[] = [];
