@@ -90,7 +90,9 @@ export class NewsComponent implements OnInit{
     if (this.auth.isLoggedIn()) {
       this.router.navigate(['/vaovao/dashboard']);
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'], {
+        queryParams: { redirectTo: '/vaovao/dashboard'}
+      });
     }
   }
 

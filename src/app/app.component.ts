@@ -7,6 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -30,12 +31,12 @@ export class AppComponent{
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      const hiddenRoutes = ['', 'ivotoerana', '404', 'login', 'vaovao/dashboard'];
-      const currentRoute = event.urlAfterRedirects.replace(/^\/+/, '');
+      const hiddenRoutes = ['', 'ivotoerana', '404', 'login', 'vaovao/dashboard', 'shop/articles-dashboard'];
+      const currentRoute = event.urlAfterRedirects.split('?')[0].replace(/^\/+/, '');
 
       this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));
 
-      this.showHeaderFooter = ! currentRoute.startsWith('vaovao/dashboard');
+      this.showHeaderFooter = ! (currentRoute.startsWith('vaovao/dashboard') || currentRoute.startsWith('shop/articles-dashboard'));
 
     });
   }

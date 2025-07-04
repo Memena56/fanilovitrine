@@ -6,7 +6,7 @@
     <button (click)="openForm()" class="bg-[#2A255E] text-white px-4 py-2 rounded hover:bg-[#3a3670] cursor-pointer">
       + Hampiditra vaovao
     </button>
-    <button (click)="logout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+    <button (click)="logout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer">
       Miala
     </button>
   </div>
@@ -64,19 +64,19 @@
       <!-- Titre -->
       <div class="relative">
         <input type="text" id="title" [(ngModel)]="title" name="title"
-               class="peer block w-full appearance-none border border-gray-300 rounded-lg px-3 pt-5 pb-2.5 text-sm focus:border-[#2A255E] focus:outline-none focus:ring-0"
-               placeholder=" " required />
+              class="peer block w-full appearance-none border border-gray-300 rounded-lg px-3 pt-5 pb-2.5 text-sm focus:border-[#2A255E] focus:outline-none focus:ring-0"
+              placeholder=" " required />
         <label for="title"
-               class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">Lohateny</label>
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">Lohateny</label>
       </div>
 
       <!-- Date -->
       <div class="relative">
         <input type="date" id="date" [(ngModel)]="date" name="date"
-               class="peer block w-full appearance-none border border-gray-300 rounded-lg px-3 pt-5 pb-2.5 text-sm focus:border-[#2A255E] focus:outline-none focus:ring-0"
-               placeholder=" " />
+              class="peer block w-full appearance-none border border-gray-300 rounded-lg px-3 pt-5 pb-2.5 text-sm focus:border-[#2A255E] focus:outline-none focus:ring-0"
+              placeholder=" " />
         <label for="date"
-               class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">Daty</label>
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">Daty</label>
       </div>
 
       <!-- Introduction -->
@@ -91,7 +91,7 @@
         <div class="flex flex-wrap gap-2">
           <label *ngFor="let cat of categories" class="flex items-center gap-2">
             <input type="checkbox" [value]="cat" (change)="onCategoryChange($event, cat)"
-                   [checked]="categoryInput.includes(cat)" class="text-[#2A255E]" />
+                  [checked]="categoryInput.includes(cat)" class="text-[#2A255E]" />
             <span class="text-sm">{{ cat }}</span>
           </label>
         </div>
@@ -166,10 +166,10 @@
 
       <!-- Boutons -->
       <div class="md:col-span-2 flex justify-between items-center">
-        <button type="submit" class="bg-[#2A255E] text-white px-6 py-2 rounded hover:bg-[#3a3670]">
+        <button type="submit" class="bg-[#2A255E] text-white px-6 py-2 rounded hover:bg-[#3a3670] cursor-pointer">
           {{ isEditing ? 'Hanova' : 'Hampiditra' }}
         </button>
-        <button *ngIf="isEditing" type="button" (click)="cancelEdit()" class="text-sm text-gray-500 hover:underline">
+        <button *ngIf="isEditing" type="button" (click)="cancelEdit()" class="text-sm text-gray-500 hover:underline ">
           Aoka ihany
         </button>
       </div>

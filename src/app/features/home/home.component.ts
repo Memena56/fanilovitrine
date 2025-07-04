@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { EventsService, Event } from '../events/events.service';
 import { NewsService, News } from '../news/news.service';
 import { Router } from '@angular/router';
-
+// import { DiocesesMapComponent } from '../dioceses-map/dioceses-map.component';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
+    // DiocesesMapComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -74,7 +75,7 @@ export class HomeComponent implements OnInit {
     this.eventsService.getEvents().subscribe({
       next: (data) => {
         console.log('Successfully fetched events:', data);
-        this.events = data;
+        this.events = data.sort((a,b) => a.title.localeCompare(b.title));
       },
       error: (error) => {
         console.error('Error fetching events:', error);

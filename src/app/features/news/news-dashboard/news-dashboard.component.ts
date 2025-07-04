@@ -1,4 +1,3 @@
-// news-dashboard.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -37,9 +36,7 @@ export class NewsDashboardComponent implements OnInit {
   editingOtherPhotos: string[] = [];
   isFormOpen = false;
 
-  categories: string[] = [
-    'Fiofanana', 'Fifandraisana', 'Fanabeazana', 'Fitantanana', 'Iombonana', 'Fampivoarana'
-  ];
+  categories: string[] = ['Fanabeazana', 'Fampivoarana', 'Fifandraisana', 'Fiofanana', 'Fitantanana', 'Iombonana'];
 
   editor = new Editor();
 

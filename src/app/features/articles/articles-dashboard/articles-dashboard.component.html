@@ -1,0 +1,157 @@
+<section class="max-w-6xl mx-auto px-4 py-8 font-sans">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-3xl font-bold text-[#2A255E]">VOKATRA My Fanilo Shop</h2>
+    <button (click)="openForm()" class="bg-[#2A255E] text-white px-4 py-2 rounded hover:bg-[#3a3670] cursor-pointer">
+      + Hampiditra vokatra
+    </button>
+    <button (click)="logout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer">
+      Miala
+    </button>
+  </div>
+
+  <!-- Tableau des articles -->
+  <div class="overflow-auto">
+    <table class="min-w-full bg-white border rounded-lg shadow font-sans">
+      <thead>
+        <tr class="bg-[#2A255E] text-white text-sm">
+          <th class="px-4 py-2 text-left">Daty</th>
+          <th class="px-4 py-2 text-left">Lohateny</th>
+          <th class="px-4 py-2 text-left">Sarany</th>
+          <th class="px-4 py-2 text-left">Stock</th>
+          <th class="px-4 py-2 text-right">Fikirakirana</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles" class="border-t text-sm">
+          <td class="px-4 py-2">{{ article.createdAt | date: 'dd/MM/yyyy' }}</td>
+          <td class="px-4 py-2 font-semibold">{{ article.title }}</td>
+          <td class="px-4 py-2">{{ article.price }} {{ article.currency }}</td>
+          <td class="px-4 py-2">{{ article.stock }}</td>
+          <td class="px-4 py-2 text-right flex gap-2 justify-end">
+            <button (click)="editArticle(article)" class="text-indigo-600 hover:text-indigo-800 cursor-pointer" title="Hanova">
+              ✏️
+            </button>
+            <button (click)="deleteArticle(article._id)" class="text-red-600 hover:text-red-800 cursor-pointer" title="Hamafa">
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Modal Form -->
+<div *ngIf="isFormOpen" class="fixed inset-0 bg-[#2A255E]/20 backdrop-blur-sm flex items-center justify-center z-50 font-sans">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+    <button (click)="closeForm()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl cursor-pointer">&times;</button>
+
+    <h3 class="text-xl font-bold mb-4">{{ isEditing ? 'Hanova mombamomba ny vokatra' : 'Hampiditra vokatra vaovao' }}</h3>
+
+    <form (ngSubmit)="submitArticle()" class="grid gap-6 md:grid-cols-2">
+      <!-- Titre -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Lohateny</label>
+        <input [(ngModel)]="title" name="title" required class="w-full border px-3 py-2 rounded" />
+      </div>
+
+      <!-- Slug -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Slug</label>
+        <input [(ngModel)]="slug" name="slug" required class="w-full border px-3 py-2 rounded" />
+      </div>
+
+      <!-- Description -->
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium mb-1">Mombamomba</label>
+        <textarea [(ngModel)]="description" name="description" rows="3" class="w-full border px-3 py-2 rounded" required></textarea>
+      </div>
+
+      <!-- Prix -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Sarany</label>
+        <input type="number" [(ngModel)]="price" name="price" class="w-full border px-3 py-2 rounded" required />
+      </div>
+
+      <!-- Devise -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Devise</label>
+        <input [(ngModel)]="currency" name="currency" class="w-full border px-3 py-2 rounded" />
+      </div>
+
+      <!-- Stock -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Stock</label>
+        <input type="number" [(ngModel)]="stock" name="stock" class="w-full border px-3 py-2 rounded" required />
+      </div>
+
+      <!-- Tailles -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Habeny (sarahana faingo)</label>
+        <input [(ngModel)]="sizesInput" name="sizes" class="w-full border px-3 py-2 rounded"
+              (ngModelChange)="onSizesInputChange($event)" />
+      </div>
+
+      <!-- Tags -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Tags (sarahana faingo)</label>
+        <input [(ngModel)]="tagsInput" name="tags" class="w-full border px-3 py-2 rounded"
+              (ngModelChange)="onTagsInputChange($event)" />
+      </div>
+
+          <!-- Catégorie -->
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium mb-1">Catégorie</label>
+        <select [(ngModel)]="selectedCategoryId" name="category" required class="w-full border px-3 py-2 rounded">
+          <option value="" disabled selected hidden>-- Misafidy sokajy --</option>
+          <option *ngFor="let option of getCategoryOptions(categories)" [value]="option._id">
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Images -->
+      <div class="md:col-span-2">
+        <label class="block mb-1 font-medium">Sary</label>
+        <input #imagesInput type="file" (change)="onImageFilesSelected($event)" multiple accept="image/*" class="hidden" />
+        <button type="button" (click)="imagesInput.click()" class="bg-[#2A255E] text-white px-4 py-2 rounded hover:bg-[#3a3670]">
+          Misafidy sary
+        </button>
+
+        <div *ngIf="previewImages.length > 0" class="mt-2 flex flex-wrap gap-2">
+          <div *ngFor="let preview of previewImages; let i = index" class="relative group">
+            <img [src]="preview" class="w-20 h-20 object-cover rounded shadow" />
+            <button type="button" (click)="removeSelectedImage(i)"
+                    class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs hidden group-hover:block">
+              &times;
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="editingImages.length > 0 && previewImages.length === 0" class="mt-2">
+          <p class="text-sm text-gray-600">Sary :</p>
+          <div class="flex flex-wrap gap-2 mt-1">
+            <div *ngFor="let img of editingImages; let i = index" class="relative group">
+              <img [src]="img" class="w-20 h-20 object-cover rounded shadow" />
+              <button type="button" (click)="removeExistingImage(i)"
+                      class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs hidden group-hover:block">
+                &times;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="md:col-span-2 flex justify-between items-center">
+        <button type="submit" class="bg-[#2A255E] text-white px-6 py-2 rounded hover:bg-[#3a3670] cursor-pointer">
+          {{ isEditing ? 'Hanova' : 'Hampiditra' }}
+        </button>
+        <button *ngIf="isEditing" type="button" (click)="resetForm()" class="text-sm text-gray-500 hover:underline cursor-pointer">
+          Aoka ihany
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

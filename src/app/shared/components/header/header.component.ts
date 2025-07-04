@@ -31,12 +31,7 @@ export class HeaderComponent implements AfterViewInit { // Implement AfterViewIn
     });
   }
 
-  // AfterViewInit ensures that the ViewChild references are available
-  ngAfterViewInit() {
-    // You can optionally add console logs here to verify the elements are found
-    // console.log('Mobile Menu Button:', this.mobileMenuButton?.nativeElement);
-    // console.log('About Flyout Content:', this.aboutFlyoutContent?.nativeElement);
-  }
+  ngAfterViewInit() { }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
