@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/vaovao', slug]);
   }
 
-  goToEventDetail(id: string){
-    this.router.navigate(['/lahasa', id]);
+  goToEventDetail(slug: string){
+    this.router.navigate(['/lahasa', slug]);
   }
 }

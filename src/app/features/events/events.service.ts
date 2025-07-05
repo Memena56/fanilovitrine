@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 
 export interface Event {
   _id: string;
+  slug: string;
   title: string;
   introduction: string;
   content?: string;
@@ -28,8 +29,8 @@ export class EventsService {
     return this.http.get<Event[]>(this.eventsUrl);
   }
 
-  getEvent(id: string): Observable<Event> {
-    return this.http.get<Event>(`${this.eventsUrl}/${id}`);
+  getEvent(slug: string) {
+    return this.http.get<Event>(`${this.eventsUrl}/${slug}`);
   }
 
   createEvent(eventData: Partial<Event>): Observable<Event> {

@@ -1,1 +1,21 @@
-<p>events works!</p>
+<div id="events" class="relative isolate overflow-hidden bg-white pt-8 pb-16 sm:pt-8 sm:pb-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">Ny ataonay</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div *ngFor="let events of events" class="bg-[#1b2451] rounded-lg overflow-hidden flex flex-col h-full min-h-[24rem] shadow-md
+            transition duration-300 ease-in-out transform cursor-pointer
+            hover:scale-[1.02] active:scale-[1.02] focus:scale-[1.02]
+            hover:shadow-xl active:shadow-xl focus:shadow-xl" (click)="goToEventDetail(events.slug)">
+        <div class="relative">
+          <img [src]="events.photo" [alt]="events.title" class="w-full h-48 object-cover" />
+        </div>
+        <div class="px-4 py-3 flex-grow">
+          <h3 class="text-white text-lg font-bold leading-tight mb-2">{{ events.title }}</h3>
+          <p class="text-white text-sm line-clamp-5">
+            {{ events.introduction }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

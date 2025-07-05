@@ -4,5 +4,5 @@ import { EventsDetailComponent } from "./events-detail.component";
 
 export const eventsRoutes: Routes = [
     { path: '', component: EventsComponent },
-    { path: ':id', component: EventsDetailComponent }
+    { path: ':slug', component: EventsDetailComponent}
 ]
