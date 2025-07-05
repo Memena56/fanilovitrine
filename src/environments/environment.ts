@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    //'https://fanilovitrineback.onrender.com'
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'https://fanilovitrineback.onrender.com'
+    // 'http://localhost:3000'
 };

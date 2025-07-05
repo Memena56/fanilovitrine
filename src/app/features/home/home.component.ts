@@ -91,6 +91,6 @@ export class HomeComponent implements OnInit {
   }
 
   goToEventDetail(id: string){
-    this.router.navigate(['/hetsika', id]);
+    this.router.navigate(['/lahasa', id]);
   }
 }

@@ -4,4 +4,3 @@ import { HomeComponent } from "../home/home.component";
 export const homeRoutes : Routes = [
     { path: '', component: HomeComponent },
 ];
-
