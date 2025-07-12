@@ -1,1 +1,46 @@
-<p>hetsika-iraisam-pirenena-detail works!</p>
+<section class="px-4 md:px-16 py-12">
+  <h1 class="text-4xl font-bold text-center text-blue-900 mb-6">{{ title }}</h1>
+  <p class="text-center text-gray-700 text-lg mb-12">
+    {{ introduction }}
+  </p>
+
+  <div *ngFor="let card of cards; index as i" class="border border-gray-200 rounded-lg mb-6 p-6 bg-white shadow">
+    <button
+      (click)="toggleExpanded(i)"
+      class="w-full text-left flex justify-between items-center"
+    >
+      <h2 class="text-xl font-semibold text-blue-800">{{ card.title }}</h2>
+      <svg [ngClass]="{ 'rotate-180': isExpanded(i) }" class="w-6 h-6 transition-transform text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+
+    <div class="mt-4 flex flex-col md:flex-row gap-6 items-start">
+      <div class="w-48 h-48 border rounded overflow-hidden flex items-center justify-center bg-gray-100 shadow-sm">
+        <img
+          *ngIf="card.image"
+          [src]="card.image"
+          [alt]="card.title"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="flex-1">
+        <p
+          #contentRef
+          class="text-gray-700 text-justify whitespace-pre-line text-base transition-all duration-300 overflow-hidden"
+          [class.line-clamp-5]="!isExpanded(i)"
+        >
+          {{ card.content }}
+        </p>
+        <button
+          *ngIf="showReadMore[i]"
+          (click)="toggleExpanded(i)"
+          class="mt-2 text-blue-600 text-sm hover:underline"
+        >
+          {{ isExpanded(i) ? 'Ahena' : 'Tohiny' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
