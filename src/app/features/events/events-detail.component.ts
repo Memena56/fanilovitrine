@@ -1,5 +1,7 @@
-import { Component, ViewContainerRef, Injector } from '@angular/core';
+import { Component, ViewContainerRef, Injector, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { Event } from '../events/events.service';
 
 @Component({
   selector: 'app-events-detail',
@@ -8,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styles: []
 })
 export class EventsDetailComponent {
+  private titleService = inject(Title);
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -16,6 +20,15 @@ export class EventsDetailComponent {
   ) {}
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      const event = data['event'] as Event | undefined;
+      if (event?.title) {
+        this.titleService.setTitle(`${event.title} - Fanilon'I Madagasikara`);
+      } else {
+        this.titleService.setTitle('Fanilon\'I Madagasikara');
+      }
+    });
+
     this.route.paramMap.subscribe(async (params) => {
       const slug = params.get('slug');
       if (!slug) {
@@ -47,7 +60,6 @@ export class EventsDetailComponent {
       }
 
       this.viewContainerRef.clear();
-
       this.viewContainerRef.createComponent(componentToRender, {
         injector: this.injector,
       });

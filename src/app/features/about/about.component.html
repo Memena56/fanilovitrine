@@ -1,110 +1,131 @@
-<section class="relative isolate overflow-hidden bg-white px-6 py-12 sm:py-8 lg:overflow-visible lg:px-0 font-sans" style="font-family: 'Inter', sans-serif;">
-    <div class="absolute inset-0 -z-10 overflow-hidden"></div>
+<section id="about-us" class="bg-white py-16 px-6 sm:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-4xl font-bold text-[#2A255E] text-center mb-12">
+      Momba ny Fanilon'I Madagasikara
+    </h2>
 
-    <div class="mx-auto max-w-7xl grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-2 lg:items-start lg:gap-y-8">
-    <!-- Texte principal -->
-    <div class="lg:col-span-1 lg:px-8">
-        <h1 class="text-4xl font-extrabold tracking-tight text-indigo-700 sm:text-5xl">
-        Tantara
-        </h1>
-        <p class="mt-4 text-lg leading-relaxed text-gray-700">
-        Ny 04 Febroary 1942 no nisiany voalohany teto Madagasikara ary <em>"Guides de France"</em> no anarana nentiny tamin'izany, rehefa nahazo fahaleovan-tena anefa isika tamin'ny 1960 dia lasa hoe <strong>"FANILON'I MADAGASIKARA" (FIM)</strong>.
-        </p>
-
-        <p class="mt-6 text-base leading-relaxed text-gray-700 max-w-prose">
-        Fikambanana mijoro manerana an'i Madagasikara ny Fanilo, fehezin'ny hitsivolan-dalàna laharana 60.133 tamin'ny 03 Oktobra 1960.<br><br>
-        Mpikambana ao amin'ny <strong>"Firaisan'ny Skotisma Malagasy" (FSM)</strong> sy <strong>"Skotisma Zazavavy Malagasy" (SZM)</strong> ary anisan'ny mpikambana ao amin'ny <strong>"Association Mondiale des Guides et des Eclaireuses" (AMGE)</strong> tamin'ny volana Jona 1963.<br><br>
-        Mpikambana ao amin'ny <strong>"Conférence Internationale Catholique du Guidisme"</strong>.
-        </p>
-
-        <ul role="list" class="mt-8 space-y-4 text-gray-600 max-w-prose">
-        <li>
-            <strong class="text-gray-900">Firotsahana: </strong>Fikambanana skotisma zazavavy katolika, manabe sy mikolokolo tovovavy Kristianina Katolika, salama, vanona, azo itokisana. Ka afaka mibe tena, saina, vatana, fanahy amin'ny maha olom-pirenena tompon'andraikitra azy eo amin'ny ankohonana, fiangonana, firenena ary fianakaviam-be iraisam-pirenena.
-        </li>
-        <li>
-            <strong class="text-gray-900">Ny Olomasina Mpiaro: </strong> Md Georges
-        </li>
-        <li>
-            <strong class="text-gray-900">Ireo Diosezy misy FIM:</strong><br>
-            - Arsidiosezy Avaratra: Antsiranana, Ambanja, Mahajanga, Port-Bergé<br>
-            - Arsidiosezy Atsinanana: Fenoarivo Atsinanana, Toamasina, Moramanga, Ambatondrazaka<br>
-            - Arsidiosezy Afovoany: Antananarivo, Miarinarivo, Tsiroanomandidy, Maintirano, Antsirabe<br>
-            - Arsidiosezy Atsimo Atsinanana: Ambositra, Fianarantsoa, Ihosy, Farafangana, Mananjary<br>
-            - Arsidiosezy Atsimo Andrefana: Toliara, Morombe, Morondava, Tolagnaro
-        </li>
-        </ul>
-
-        <!-- Bouton CTA -->
-        <div class="mt-8">
-        <a href="404" class="inline-block rounded bg-indigo-600 px-6 py-3 text-center font-semibold text-white shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition">
-            Hiditra ho mpikambana
-        </a>
-        </div>
-    </div>
-
-    <!-- Image principale -->
-    <div class="relative -mt-4 -ml-8 overflow-hidden rounded-xl shadow-lg lg:sticky lg:top-28">
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <a
+        [routerLink]="['tantara']"
+        class="group flex flex-col bg-[#2A255E] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
         <img
-        src="tantara.webp"
-        alt="Photo illustrant l'histoire de Fanilon'I Madagasikara"
-        class="w-full max-w-none object-cover sm:w-[48rem] sm:h-[28rem] rounded-xl"
-        loading="lazy"
+          src="assets/images/about/history.jpg"
+          alt="Tantaran'ny fikambanana"
+          class="h-48 w-full object-cover"
         />
-    </div>
-    </div>
-</section>
-
-<section id="section-vision" class="bg-gray-50 py-12 sm:py-10 font-sans" style="font-family: 'Inter', sans-serif;">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-3xl font-extrabold tracking-tight text-indigo-700 sm:text-4xl">
-        Antom-pisiana
-        </h2>
-        <p class="mt-4 text-lg text-gray-600 max-w-prose mx-auto">
-        Ny Fanilon'I Madagasikara dia manana:
-        </p>
-    </div>
-
-    <div class="mx-auto mt-12 max-w-4xl">
-        <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
-            <div class="relative pl-14">
-                <dt class="text-xl font-semibold text-indigo-700">Vina</dt>
-                <dd class="mt-2 text-gray-700">
-                Tontolo mamiratra ho an'ny ankizivavy sy ny tovovavy ahafahany mampivoatra ny tenany sy ny hafa.
-                </dd>
-            </div>
-            <div class="relative pl-14">
-                <dt class="text-xl font-semibold text-indigo-700">Iraka</dt>
-                <dd class="mt-2 text-gray-700">
-                Manabe zazavavy ho olom-banona, matoky an'Andriamanitra, mandray andraikitra ary afaka manatsara ny tontolo.
-                </dd>
-            </div>
-            <div class="relative pl-14">
-                <dt class="text-xl font-semibold text-indigo-700">Lohahevitra iainana</dt>
-                <dd class="mt-2 text-gray-700">
-                "Miara-dalana, miara-tody lavitra ho an'ny ankizivavy sy ny tontolony"
-                </dd>
-            </div>
-            <div class="relative pl-14">
-                <dt class="text-xl font-semibold text-indigo-700">Tenin'Andriamanitra iainana</dt>
-                <dd class="mt-2 text-gray-700">
-                "Ny Tompo momba anao" Md Lk 1, 28d
-                </dd>
-            </div>
-        </dl>
-    </div>
-    </div>
-</section>
-
-<section id="section-image" class="bg-white py-8 font-sans" style="font-family: 'Inter', sans-serif;">
-    <div id="gallery" class="relative w-full">
-        <div class="relative h-56 overflow-hidden md:h-96 rounded-lg shadow-md">
-            <img
-            src="sectionimage.webp"
-            alt="Image illustrative de Fanilon'I Madagasikara"
-            class="absolute block max-w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover w-full h-full"
-            loading="lazy"
-            />
+        <div class="p-6 text-white">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-200">
+            Tantaran'ny fikambanana
+          </h3>
+          <p class="text-sm opacity-90">
+            Fantaro ny niandohana sy ny tantaran'ny Fanilon'I Madagasikara.
+          </p>
         </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a
+        [routerLink]="['mpitondra']"
+        class="group flex flex-col bg-[#2A255E] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          src="assets/images/about/leaders.jpg"
+          alt="Aomonie sy Filoha nifandimby"
+          class="h-48 w-full object-cover"
+        />
+        <div class="p-6 text-white">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-200">
+            Ireo Aomonie sy Filoha Iombonana nifandimby
+          </h3>
+          <p class="text-sm opacity-90">
+            Hijery ireo Pretra Aomonie sy Filoha Iombonana nifandimby tato amin'ny Fanilon'I Madagasikara.
+          </p>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a
+        [routerLink]="['aim-panahy']"
+        class="group flex flex-col bg-[#2A255E] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          src="assets/images/about/spiritual.jpg"
+          alt="Aim-panahy"
+          class="h-48 w-full object-cover"
+        />
+        <div class="p-6 text-white">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-200">
+            Ny lovam-panahin'ny Fikambanana
+          </h3>
+          <p class="text-sm opacity-90">
+            Mianara momba ny aim-panahin'ny, ny asa sy ezaka ilozohany sy ny mampiavaka azy manokana.
+          </p>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a
+        [routerLink]="['rafitra']"
+        class="group flex flex-col bg-[#2A255E] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          src="assets/images/about/structure.jpg"
+          alt="Rafitra"
+          class="h-48 w-full object-cover"
+        />
+        <div class="p-6 text-white">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-200">
+            Rafitra sy Mpikambana
+          </h3>
+          <p class="text-sm opacity-90">
+            Jereo ny rafitry ny fikambanana sy ireo mpikambana beazina ao.
+          </p>
+        </div>
+      </a>
+
+      <!-- Card 5 -->
+      <a
+        [routerLink]="['diosezy']"
+        class="group flex flex-col bg-[#2A255E] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          src="assets/images/about/dioceses.jpg"
+          alt="Diosezy"
+          class="h-48 w-full object-cover"
+        />
+        <div class="p-6 text-white">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-200">
+            Ireo diosezy misy Fanilon'i Madagasikara
+          </h3>
+          <p class="text-sm opacity-90">
+            Fantaro ireo diosezy samihafa misy Fanilo manerana an’i Madagasikara.
+          </p>
+        </div>
+      </a>
+
+      <!-- Card 6 -->
+      <a
+        href="lahasa"
+        class="group flex flex-col bg-[#2A255E] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          src="assets/images/about/activities.jpg"
+          alt="Ny ataonay"
+          class="h-48 w-full object-cover"
+        />
+        <div class="p-6 text-white">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-200">
+            Ny ataonay
+          </h3>
+          <p class="text-sm opacity-90">
+            Fantaro ny asa sy hetsika ataon’ny Fanilon’i Madagasikara.
+          </p>
+        </div>
+      </a>
     </div>
+  </div>
 </section>
