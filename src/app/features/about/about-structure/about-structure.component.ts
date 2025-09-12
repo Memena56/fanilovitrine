@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { AboutSidebarComponent } from '../about-sidebar/about-sidebar.component';
 
 @Component({
   selector: 'app-about-structure',
-  imports: [],
+  imports: [AboutSidebarComponent],
   templateUrl: './about-structure.component.html',
   styleUrl: './about-structure.component.css'
 })

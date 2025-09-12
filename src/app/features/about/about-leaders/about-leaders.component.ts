@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import  { AboutService, Gouvernance } from '../about.service';
+import { AboutSidebarComponent } from '../about-sidebar/about-sidebar.component';
 
 @Component({
   selector: 'app-about-leaders',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AboutSidebarComponent],
   templateUrl: './about-leaders.component.html',
   styleUrl: './about-leaders.component.css'
 })

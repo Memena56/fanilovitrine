@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { EventsService, Event } from '../events/events.service';
 import { NewsService, News } from '../news/news.service';
 import { Router } from '@angular/router';
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule
     // DiocesesMapComponent
   ],
   templateUrl: './home.component.html',
