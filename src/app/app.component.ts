@@ -36,12 +36,12 @@ export class AppComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      const hiddenRoutes = ['', 'ivotoerana', '404', 'login', 'vaovao/dashboard', 'shop/articles-dashboard'];
+      const hiddenRoutes = ['', 'ivotoerana', '404', 'login', 'vaovao/dashboard', 'shop/articles-dashboard', 'ivotoerana/dashboard'];
       const currentRoute = this.router.url.split('?')[0].replace(/^\/+/, '');
 
       this.showBreadCrumb = !hiddenRoutes.some(route => currentRoute === route || currentRoute.startsWith(route + '/'));
 
-      this.showHeaderFooter = !(currentRoute.startsWith('vaovao/dashboard') || currentRoute.startsWith('shop/articles-dashboard'));
+      this.showHeaderFooter = !(currentRoute.startsWith('vaovao/dashboard') || currentRoute.startsWith('shop/articles-dashboard') || currentRoute.startsWith('ivotoerana/dashboard'));
 
       let route = this.activatedRoute;
       while (route.firstChild) {

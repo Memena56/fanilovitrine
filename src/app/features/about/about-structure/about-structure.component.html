@@ -1,1 +1,93 @@
-<p>about-structure works!</p>
+<section id="about-structure" class="bg-white py-8 sm:py-16 px-6 sm:px-12 lg:px-24">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <!-- Sidebar en haut sur mobile -->
+        <div class="lg:hidden mb-2">
+        <app-about-sidebar></app-about-sidebar>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="lg:col-span-3 space-y-12">
+        <h2 class="text-2xl font-bold text-[#2A255E] mb-8">
+            Rafitra sy Mpikambana ato amin'ny Fikambanana
+        </h2>
+
+        <!-- Image de l'organigramme -->
+        <div class="flex flex-col items-center">
+            <img src="Organigramme.png" alt="Rafitry ny Fikambanana" class="rounded-lg shadow-md w-full lg:w-3/4">
+        </div>
+
+        <!-- Légendes -->
+        <div class="space-y-4">
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li><strong>FINA*</strong> : Filan-kevitra Nasionaly</li>
+            <li><strong>FI*</strong> : Filoha Iombonana</li>
+            <li><strong>FIVMA*</strong> : Fivondronana Mahaleotena</li>
+            <li><strong>TAFIKA*</strong> : Faribolana – Andiantantely – Andiankintana – Donak’afo</li>
+            </ul>
+            <p class="text-sm text-gray-600 mt-4">
+            <strong>Fanamarihana :</strong> Faritra = Distrika na Misiona na Fileovana. <br>
+            Fivondronana no iantsoana ireo Fanilo mikatroka eo anivon’ny Paroasy.
+            </p>
+        </div>
+
+        <!-- Membres -->
+        <div class="space-y-6">
+            <h3 class="text-xl font-semibold text-[#2A255E]">Momba ny Mpikambana</h3>
+            <p class="text-gray-700">Ahitana mpikambana : <strong>Mpanabe – Beazina – Mpanohana</strong></p>
+
+            <!-- Mpanabe -->
+            <div>
+            <h4 class="font-semibold text-[#2A255E]">1. Mpanabe</h4>
+            <p class="text-gray-700">
+                Mpanampy Mpiandraikitra, Mpiandraikitra, Tonia, Filoha, Zoky am-panahy, Ray am-panahy,
+                dia ireo izay nankatoavina hanana ny fahefana hampihatra ny fanabeazana sy ny fepetra rehetra ao amin'ny skotisma.
+            </p>
+            </div>
+
+            <!-- Beazina -->
+            <div>
+            <h4 class="font-semibold text-[#2A255E]">2. Beazina</h4>
+            <p class="text-gray-700 mb-2">Misy sampam-panabeazana 4 :</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>Sampana Mavo <em>(HANITRINIALA)</em> : 6 – 9 taona</li>
+                <li>Sampana Maitso <em>(TANTELIALA)</em> : 10 – 13 taona</li>
+                <li>Sampana Mena Zandriny <em>(VAHINDANITRA)</em> : 14 – 16 taona</li>
+                <li>Sampana Mena Zokiny <em>(AFO)</em> : 17 – 22 taona</li>
+            </ul>
+            <p class="text-gray-700 mt-2">Sampam-panabeazana manokana :</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>Sampana Ranovelona : Ho an’ireo zazavavy sy tovovavy tra-pahasembanana ara-tsaina</li>
+            </ul>
+            <p class="text-sm text-gray-600 mt-2">
+                <strong>Fanamarihana :</strong> FIMO (Fanilon’ny Oniversite hatramin’ny 25 taona)
+                : Tsy sampana Afo intsony nanomboka tamin’ny AG 2024 Miarinarivo.
+            </p>
+            </div>
+
+            <!-- Fatra -->
+            <div>
+            <h4 class="font-semibold text-[#2A255E]">3. Fanilo Tranainy (FATRA)</h4>
+            <p class="text-gray-700">
+                Ireo tranainy izay nandalo tao amin'ny fikambanana, tsy mikatroka intsony
+                nefa kosa mivondrona iray araka ny fitsipika manokana ho an'ny tranainy
+                izay nankatoavin'ny Fivoriambe tamin’ ny taona 2022 tany Mahajanga.
+            </p>
+            </div>
+
+            <!-- Vona iray -->
+            <div>
+            <h4 class="font-semibold text-[#2A255E]">4. Mpanohana (VONA IRAY)</h4>
+            <p class="text-gray-700">
+                Ahitana ireo Ray aman-drenin’ny mpikambana, mpanao soa, sy ireo Fanilo tranainy,
+                manao asa soa na asa fanohanana ny Fikambanana izy ireo.
+            </p>
+            </div>
+        </div>
+        </div>
+
+        <!-- Sidebar sur grand écran -->
+        <aside class="hidden lg:block mb-0">
+        <app-about-sidebar></app-about-sidebar>
+        </aside>
+    </div>
+</section>

@@ -1,11 +1,66 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ContactService, Contact } from './contact.service';
 
 @Component({
   selector: 'app-contact',
-  imports: [],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  imports: [FormsModule, HttpClientModule, CommonModule],
+  standalone: true,
+  templateUrl: './contact.component.html'
 })
 export class ContactComponent {
+  contactData: Contact = {
+    genre: 'tsy-ambara',
+    age: 0,
+    fivondronana: '',
+    faritra: '',
+    diosezy: '',
+    fait: 'fampahafantarana',
+    message: '',
+    remarks: ''
+  };
 
+  notificationMessage = '';
+  notificationType: 'success' | 'error' | '' = '';
+
+  constructor(private contactService: ContactService) {}
+
+  onSubmit() {
+    this.contactService.createContact(this.contactData).subscribe({
+      next: () => {
+        this.notificationMessage = "Misaotra! Nalefa soa aman-tsara ny hafatrao.";
+        this.notificationType = 'success';
+        this.resetForm();
+        this.autoCloseNotification();
+      },
+      error: (err) => {
+        console.error(err);
+        this.notificationMessage = "Nisy olana tamin'ny fandefasana ny hafatra.";
+        this.notificationType = 'error';
+        this.autoCloseNotification();
+      }
+    });
+  }
+
+  resetForm() {
+    this.contactData = {
+      genre: 'tsy-ambara',
+      age: 0,
+      fivondronana: '',
+      faritra: '',
+      diosezy: '',
+      fait: 'fampahafantarana',
+      message: '',
+      remarks: ''
+    };
+  }
+
+  autoCloseNotification() {
+    setTimeout(() => {
+      this.notificationMessage = '';
+      this.notificationType = '';
+    }, 3000);
+  }
 }
