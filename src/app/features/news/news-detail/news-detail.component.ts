@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService, News } from '../news.service';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class NewsDetailComponent implements OnInit {
+  @ViewChild('galleryContainer') galleryContainer!: ElementRef;
   newsItem!: News;
   safeContent!: SafeHtml;
   album: Array<{ src: string; thumb: string; caption?: string }> = [];
@@ -86,5 +87,11 @@ export class NewsDetailComponent implements OnInit {
 
   goToNewsDetail(slug: string) {
     this.router.navigate(['/vaovao', slug]);
+  }
+
+  scrollGallery(direction: number) {
+    const container = this.galleryContainer.nativeElement;
+    const scrollAmount = 300; // largeur à scroller par clic
+    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
   }
 }
