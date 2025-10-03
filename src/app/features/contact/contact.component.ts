@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ContactService, Contact } from './contact.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-contact',
@@ -18,14 +20,17 @@ export class ContactComponent {
     faritra: '',
     diosezy: '',
     fait: 'fampahafantarana',
-    message: '',
-    remarks: ''
+    message: ''
   };
 
   notificationMessage = '';
   notificationType: 'success' | 'error' | '' = '';
 
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   onSubmit() {
     this.contactService.createContact(this.contactData).subscribe({
@@ -52,8 +57,7 @@ export class ContactComponent {
       faritra: '',
       diosezy: '',
       fait: 'fampahafantarana',
-      message: '',
-      remarks: ''
+      message: ''
     };
   }
 
@@ -62,5 +66,15 @@ export class ContactComponent {
       this.notificationMessage = '';
       this.notificationType = '';
     }, 3000);
+  }
+
+  goToDashboardOrLogin() {
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate(['/ivotoerana/dashboard']);
+    } else {
+      this.router.navigate(['/login'], {
+        queryParams: { redirectTo: '/ivotoerana/dashboard'}
+      });
+    }
   }
 }

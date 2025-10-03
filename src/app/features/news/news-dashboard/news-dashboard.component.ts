@@ -194,7 +194,7 @@ export class NewsDashboardComponent implements OnInit {
         next: () => this.getAllNews(),
         error: (err) => {
           console.error('Erreur suppression:', err);
-          alert('Tsy tafafàna.');
+          alert('Tsy voafafa.');
         }
       });
     }

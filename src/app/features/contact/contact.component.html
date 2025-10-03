@@ -1,4 +1,14 @@
-<div class="bg-white px-6 py-24 sm:py-32 lg:px-8">
+<div class="bg-white px-6 py-8 sm:py-12 lg:px-8 relative">
+    <button (click)="goToDashboardOrLogin()"
+        class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 cursor-pointer"
+        title="Admin Dashboard">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="M10.5 6h3M4.5 12h15m-7.5 6h3" />
+        </svg>
+    </button>
     <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
         Ivotoeran'ny Maherifo
@@ -10,11 +20,9 @@
         </p>
     </div>
 
-    <!-- Formulaire -->
     <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="mx-auto mt-16 max-w-xl sm:mt-20">
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 
-        <!-- Genre -->
         <div>
             <label for="genre" class="block text-sm font-semibold text-gray-900">Lahy/Vavy</label>
             <select id="genre" name="genre" [(ngModel)]="contactData.genre"
@@ -25,14 +33,12 @@
             </select>
         </div>
 
-        <!-- Age -->
         <div>
             <label for="age" class="block text-sm font-semibold text-gray-900">Taona</label>
             <input type="number" name="age" id="age" [(ngModel)]="contactData.age" min="0" max="120"
             class="mt-2 block w-full rounded-md border border-gray-300 px-3.5 py-2">
         </div>
 
-        <!-- Fivondronana / Faritra / Diosezy -->
         <div class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-6">
             <div>
             <label class="block text-sm font-semibold text-gray-900">Fivondronana</label>
@@ -51,7 +57,6 @@
             </div>
         </div>
 
-        <!-- Fait -->
         <div class="sm:col-span-2">
             <label class="block text-sm font-semibold text-gray-900">Antony</label>
             <select name="fait" [(ngModel)]="contactData.fait"
@@ -62,22 +67,14 @@
             </select>
         </div>
 
-        <!-- Message -->
         <div class="sm:col-span-2">
             <label class="block text-sm font-semibold text-gray-900">Zava-nitranga</label>
             <textarea name="message" [(ngModel)]="contactData.message" rows="4"
             class="mt-2 block w-full rounded-md border border-gray-300 px-3.5 py-2"></textarea>
         </div>
 
-        <!-- Remarks -->
-        <div class="sm:col-span-2">
-            <label class="block text-sm font-semibold text-gray-900">Fanamarihana</label>
-            <textarea name="remarks" [(ngModel)]="contactData.remarks" rows="4"
-            class="mt-2 block w-full rounded-md border border-gray-300 px-3.5 py-2"></textarea>
-        </div>
         </div>
 
-        <!-- Submit -->
         <div class="mt-10">
         <button type="submit"
             class="w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500">
@@ -87,7 +84,6 @@
     </form>
     </div>
 
-    <!-- ✅ Notification Popup -->
     <div *ngIf="notificationMessage"
         class="fixed inset-0 flex items-center justify-center z-50">
     <div

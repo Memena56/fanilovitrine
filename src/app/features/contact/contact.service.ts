@@ -12,7 +12,7 @@ export interface Contact {
   diosezy?: string;
   fait: 'fampahafantarana' | 'fitorohana' | 'fitoriana';
   message: string;
-  remarks?: string;
+  status?: 'traite' | 'non-traite';
   createdAt?: string;
 }
 
