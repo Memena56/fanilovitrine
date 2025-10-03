@@ -1,80 +1,85 @@
-<section class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-  <img src="header.webp" alt="" class="absolute inset-0 -z-10 size-full object-cover object-center">
-  <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0" aria-hidden="true">
-    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-  </div>
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">Iza moa izahay?</h2>
-      <p class="mt-6 text-lg sm:text-xl text-gray-300 leading-relaxed">
-        Ny Fanilon'I Madagasikara dia Fikambanam-panabeazana ho an'ny zazavavy katôlika, mampihatra ny foto-kevitra skotisma
-        araka ny namoronan'i Baden Powell azy.
-      </p>
+<!-- HERO -->
+<section class="relative isolate overflow-hidden bg-gray-900 py-12 sm:py-16">
+  <!-- Image de fond -->
+  <img src="header.webp" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-center">
+
+  <!-- Contenu -->
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 ">
+    <h2 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">Iza moa izahay?</h2>
+    <p class="mt-6 text-lg sm:text-xl text-gray-200 leading-relaxed max-w-3xl mr-auto text-left">
+      Ny Fanilon'I Madagasikara dia Fikambanam-panabeazana ho an'ny <br> zazavavy katôlika, mampihatra ny foto-kevitra skotisma
+      <br> araka ny namoronan'i Baden Powell azy.
+    </p>
+
+    <!-- Counters -->
+    <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 justify-center">
+      <div class="flex flex-col-reverse gap-1">
+        <dt class="text-base text-gray-300">Mpikambana</dt>
+        <dd class="text-4xl font-bold text-white">{{ counters[0].value | number }}</dd>
+      </div>
+      <div class="flex flex-col-reverse gap-1">
+        <dt class="text-base text-gray-300">Diosezy</dt>
+        <dd class="text-4xl font-bold text-white">{{ counters[1].value }}</dd>
+      </div>
     </div>
-    <div class="mx-auto mt-12 max-w-2xl lg:mx-0 lg:max-w-none">
-      <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="flex flex-col-reverse gap-1">
-          <dt class="text-base text-gray-300">Mpikambana</dt>
-          <dd class="text-4xl font-bold text-white">{{ counters[0].value | number }}</dd>
-        </div>
-        <div class="flex flex-col-reverse gap-1">
-          <dt class="text-base text-gray-300">Diosezy</dt>
-          <dd class="text-4xl font-bold text-white">{{ counters[1].value }}</dd>
-        </div>
-      </dl>
-    </div>
-    <div class="mt-10 text-center">
+
+    <!-- Bouton flottant -->
+    <div class="mt-16 flex justify-center">
       <button [routerLink]="['mombamomba']"
-       class="bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition font-semibold shadow-md animate-[float_3s_ease-in-out_infinite] cursor-pointer">
+        class="bg-[#F9B000] text-[#2A255E] px-8 py-3 rounded-full hover:bg-[#e6a200] transition font-semibold shadow-lg animate-[float_3s_ease-in-out_infinite]">
         Momba ny Fanilo
       </button>
     </div>
   </div>
 </section>
 
+<!-- VAOVAO -->
 <section id="news" class="relative isolate overflow-hidden bg-white pt-20 pb-16">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <h2 class="text-3xl font-extrabold text-center text-[#2A255E] mb-12">Vaovao</h2>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div *ngFor="let news of newsItems" class="relative h-64 sm:h-80 md:h-64 rounded-xl overflow-hidden cursor-pointer
-            transition-transform duration-300 ease-in-out
-            hover:scale-[1.02] active:scale-[1.02] focus:scale-[1.02]
-            hover:shadow-xl active:shadow-xl focus:shadow-xl" (click)="goToNewsDetail(news.slug)">
+      <div *ngFor="let news of newsItems"
+        class="relative h-64 sm:h-80 md:h-64 rounded-xl overflow-hidden cursor-pointer
+                transition-transform duration-300 ease-in-out
+                hover:scale-[1.02] hover:shadow-xl"
+        (click)="goToNewsDetail(news.slug)">
+
         <img [src]="news.photo" [alt]="news.title" class="absolute inset-0 size-full object-cover object-center rounded-xl">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#003399]/90 to-transparent p-6 flex flex-col justify-end">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#2A255E]/90 to-transparent p-6 flex flex-col justify-end">
           <h3 class="text-white text-xl font-semibold">{{ news.title }}</h3>
-          <p class="text-white text-sm mt-1">{{ news.introduction }}</p>
+          <p class="text-gray-200 text-sm mt-1">{{ news.introduction }}</p>
         </div>
       </div>
     </div>
 
     <div class="mt-12 text-center">
-      <a href="vaovao" class="inline-block bg-[#2A255E] text-white px-6 py-3 rounded-full font-medium text-base shadow-md
-          cursor-pointer hover:bg-[#3b3795] transition-colors duration-300">
+      <a href="vaovao"
+        class="inline-block bg-[#2A255E] text-white px-6 py-3 rounded-full font-medium text-base shadow-md
+                hover:bg-[#3b3795] transition-colors duration-300">
         Vaovao rehetra
       </a>
     </div>
   </div>
 </section>
 
-<!-- <app-dioceses-map></app-dioceses-map> -->
-
-<section id="events" class="relative isolate overflow-hidden bg-[#F9B000] pt-8 pb-16 sm:pt-8 sm:pb-16">
+<!-- EVENTS -->
+<section id="events" class="relative isolate overflow-hidden bg-[#F9B000] pt-12 pb-20">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <h2 class="text-3xl font-bold text-center text-[#2A255E] mb-12">Ny ataonay</h2>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-      <div *ngFor="let events of events" class="bg-[#1b2451] rounded-lg overflow-hidden flex flex-col h-full min-h-[24rem] shadow-md
-            transition duration-300 ease-in-out transform cursor-pointer
-            hover:scale-[1.02] active:scale-[1.02] focus:scale-[1.02]
-            hover:shadow-xl active:shadow-xl focus:shadow-xl" (click)="goToEventDetail(events.slug)">
+      <div *ngFor="let events of events"
+            class="bg-[#1b2451] rounded-xl overflow-hidden flex flex-col shadow-md
+                  transition duration-300 cursor-pointer hover:scale-[1.03] hover:shadow-xl"
+            (click)="goToEventDetail(events.slug)">
+
         <div class="relative">
-          <img [src]="events.photo" [alt]="events.title" class="w-full h-48 object-cover" />
+          <img [src]="events.photo" [alt]="events.title" class="w-full h-40 object-cover" />
         </div>
         <div class="px-4 py-3 flex-grow">
           <h3 class="text-white text-lg font-bold leading-tight mb-2">{{ events.title }}</h3>
-          <p class="text-white text-sm line-clamp-5">
-            {{ events.introduction }}
-          </p>
+          <p class="text-gray-200 text-sm line-clamp-5">{{ events.introduction }}</p>
         </div>
       </div>
     </div>
