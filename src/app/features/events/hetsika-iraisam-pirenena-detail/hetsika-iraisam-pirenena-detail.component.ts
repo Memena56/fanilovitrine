@@ -22,6 +22,7 @@ export class HetsikaIraisamPirenenaDetailComponent implements OnInit, AfterViewI
   cards: Card[] = [];
   expandedIndexes = new Set<number>();
   showReadMore: boolean[] = [];
+  selectedImage: string | null = null;
 
   @ViewChildren('contentRef') contentRefs!: QueryList<ElementRef>;
 
@@ -73,5 +74,15 @@ export class HetsikaIraisamPirenenaDetailComponent implements OnInit, AfterViewI
 
   isExpanded(i: number): boolean {
     return this.expandedIndexes.has(i);
+  }
+
+  openImage(imageUrl?: string): void {
+    if (imageUrl) {
+      this.selectedImage = imageUrl;
+    }
+  }
+
+  closeImage(): void {
+    this.selectedImage = null;
   }
 }

@@ -21,7 +21,8 @@
           *ngIf="card.image"
           [src]="card.image"
           [alt]="card.title"
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover cursor-zoom-in"
+          (click)="openImage(card.image)"
         />
       </div>
 
@@ -43,4 +44,19 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="selectedImage"
+      class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+      (click)="closeImage()">
+
+    <div class="relative max-w-4xl max-h-[90vh]" (click)="$event.stopPropagation()">
+      <button (click)="closeImage()"
+              class="absolute top-2 right-2 text-white text-3xl font-bold z-10">&times;</button>
+
+      <img [src]="selectedImage"
+          alt="Image agrandie"
+          class="rounded-lg max-h-[90vh] object-contain shadow-xl" />
+    </div>
+  </div>
+
 </section>

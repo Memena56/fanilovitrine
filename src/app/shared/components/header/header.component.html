@@ -1,18 +1,14 @@
-<header class="bg-[#2A255E] text-white font-sans">
-  <nav
-    class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-    aria-label="Global"
-  >
+<header class="sticky top-0 z-50 bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-700 text-white font-sans backdrop-blur-md shadow-md shadow-indigo-900/30">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+
     <!-- Logo -->
     <div class="flex lg:flex-1">
       <a href="#" class="-m-1.5 p-1.5 flex items-center gap-2">
         <img
-          class="h-8 w-auto hover:shadow-xl hover:scale-[1.02]
-                transition duration-500 ease-in-out opacity-100"
+          class="h-10 w-auto transition-transform duration-300 ease-in-out hover:scale-105 hover:drop-shadow-xl"
           src="logofim.png"
           alt="Fanilon'I Madagasikara"
         />
-        <span class="sr-only">Fanilon'I Madagasikara</span>
       </a>
     </div>
 
@@ -25,141 +21,88 @@
         (click)="toggleMobileMenu()"
       >
         <span class="sr-only">Open main menu</span>
-        <svg
-          class="h-6 w-6"
-          stroke="currentColor"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
-          />
+        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
         </svg>
       </button>
     </div>
 
     <!-- Desktop navigation -->
     <div class="hidden lg:flex lg:gap-x-6">
-      <!-- Simple links -->
-      <a
-        href="mombamomba"
-        class="px-3 py-2 rounded-md hover:bg-indigo-100/20 transition-colors duration-200 font-semibold"
-        [ngClass]="{ 'bg-indigo-100/20 text-indigo-300': currentRoute === 'mombamomba' }"
-      >
+      <a href="mombamomba" class="px-3 py-2 rounded-md font-semibold relative group"
+          [ngClass]="{ 'text-indigo-300': currentRoute === 'mombamomba' }">
         Momba ny Fanilo
+        <span class="absolute left-0 -bottom-1 h-0.5 w-0 bg-indigo-300 transition-all group-hover:w-full"></span>
       </a>
-      <a
-        href="lahasa"
-        class="px-3 py-2 rounded-md hover:bg-indigo-100/20 transition-colors duration-200 font-semibold"
-        [ngClass]="{ 'bg-indigo-100/20 text-indigo-300': currentRoute === 'lahasa' }"
-      >
+      <a href="lahasa" class="px-3 py-2 rounded-md font-semibold relative group"
+          [ngClass]="{ 'text-indigo-300': currentRoute === 'lahasa' }">
         Lahasa
+        <span class="absolute left-0 -bottom-1 h-0.5 w-0 bg-indigo-300 transition-all group-hover:w-full"></span>
       </a>
-      <a
-        href="vaovao"
-        class="px-3 py-2 rounded-md hover:bg-indigo-100/20 transition-colors duration-200 font-semibold"
-        [ngClass]="{ 'bg-indigo-100/20 text-indigo-300': currentRoute === 'vaovao' }"
-      >
+      <a href="vaovao" class="px-3 py-2 rounded-md font-semibold relative group"
+          [ngClass]="{ 'text-indigo-300': currentRoute === 'vaovao' }">
         Vaovao
+        <span class="absolute left-0 -bottom-1 h-0.5 w-0 bg-indigo-300 transition-all group-hover:w-full"></span>
       </a>
-      <a
-        href="shop"
-        class="px-3 py-2 rounded-md hover:bg-indigo-100/20 transition-colors duration-200 font-semibold"
-        [ngClass]="{ 'bg-indigo-100/20 text-indigo-300': currentRoute === 'shop' }"
-      >
+      <a href="shop" class="px-3 py-2 rounded-md font-semibold relative group"
+          [ngClass]="{ 'text-indigo-300': currentRoute === 'shop' }">
         My Fanilo Shop
+        <span class="absolute left-0 -bottom-1 h-0.5 w-0 bg-indigo-300 transition-all group-hover:w-full"></span>
       </a>
     </div>
 
     <!-- CTA -->
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a
-        href="ivotoerana"
-        class="px-4 py-2 rounded-md hover:bg-indigo-100/20 transition-colors duration-200 font-semibold"
-      >
+      <a href="ivotoerana" class="px-5 py-2 rounded-lg font-semibold bg-indigo-600 hover:bg-indigo-500 transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center gap-1">
         Ivotoeran'ny Mahery fo <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
   </nav>
 
   <!-- Mobile menu -->
+<div class="lg:hidden" role="dialog" aria-modal="true" *ngIf="isMobileMenuOpen">
+
+  <!-- Backdrop -->
+  <div class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" (click)="closeMobileMenu()"></div>
+
+  <!-- Menu content -->
   <div
-    class="lg:hidden"
-    role="dialog"
-    aria-modal="true"
-    *ngIf="isMobileMenuOpen"
+    #mobileMenuContent
+    class="fixed top-0 right-0 z-50 h-screen w-4/5 max-w-sm bg-white shadow-xl transform transition-transform duration-300 flex flex-col"
+    [ngClass]="{ 'translate-x-0': isMobileMenuOpen, 'translate-x-full': !isMobileMenuOpen }"
   >
-    <div
-      class="fixed inset-0 z-10 bg-black/30"
-      (click)="closeMobileMenu()"
-    ></div>
-
-    <div
-      #mobileMenuContent
-      class="fixed inset-y-0 right-0 z-20 w-4/5 max-w-sm overflow-y-auto bg-white px-6 py-6 sm:ring-1 sm:ring-gray-900/10"
-    >
-      <div class="flex items-center justify-between">
-        <a href="#"
-          ><img class="h-8 w-auto" src="logofim.png" alt="Fanilo"
-        /></a>
-        <button
-          type="button"
-          class="-m-2.5 rounded-md p-2.5 text-gray-700"
-          (click)="closeMobileMenu()"
-        >
-          <svg
-            class="h-6 w-6"
-            stroke="currentColor"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
-
-      <div class="mt-6 divide-y divide-gray-200">
-        <div class="space-y-1 py-4">
-          <!-- Liens simples -->
-          <a
-            href="mombamomba"
-            class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50"
-            >Momba ny Fanilo</a
-          >
-          <a
-            href="lahasa"
-            class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50"
-            >Lahasa</a
-          >
-          <a
-            href="vaovao"
-            class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50"
-            >Vaovao</a
-          >
-          <a
-            href="shop"
-            class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50"
-            >My Fanilo Shop</a
-          >
-        </div>
-
-        <div class="pt-4">
-          <a
-            href="ivotoerana"
-            class="block px-3 py-2.5 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50"
-          >
-            Ivotoeran'ny Mahery fo
-          </a>
-        </div>
-      </div>
+    <!-- Header avec logo et bouton close -->
+    <div class="flex items-center justify-between px-6 py-6 border-b border-gray-200">
+      <a href="#">
+        <img class="h-8 w-auto" src="logofim.png" alt="Fanilo" />
+      </a>
+      <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" (click)="closeMobileMenu()">
+        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
+
+    <!-- Liens -->
+    <nav class="flex-1 px-6 py-6 space-y-2 overflow-y-auto">
+      <a href="mombamomba" class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50">
+        Momba ny Fanilo
+      </a>
+      <a href="lahasa" class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50">
+        Lahasa
+      </a>
+      <a href="vaovao" class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50">
+        Vaovao
+      </a>
+      <a href="shop" class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50">
+        My Fanilo Shop
+      </a>
+      <a href="ivotoerana" class="block px-3 py-2 rounded-md text-base font-semibold text-[#2A255E] hover:bg-indigo-50">
+        Ivotoeran'ny Mahery fo
+      </a>
+    </nav>
   </div>
+</div>
+
 </header>
