@@ -1,4 +1,4 @@
-name: Déploiement automatique de application Angular via SFTP
+name: Deploy Frontend
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp # Utilisez 'sftp' pour une connexion sécurisée. Changez à 'ftp' si SFTP n'est pas disponible.
-          local-dir: ./dist/${{ env.APP_NAME }}/ # Chemin vers les fichiers compilés de votre application Angular
+          local-dir: ./dist/ # Chemin vers les fichiers compilés de votre application Angular
           server-dir: ${{ secrets.FTP_REMOTE_PATH }} # Le chemin sur votre serveur où les fichiers doivent être placés
           # Important : Si vous voulez que les fichiers existants soient remplacés, 'overwrite: true' est souvent le défaut.
           # Si vous voulez supprimer les fichiers sur le serveur qui ne sont plus dans votre dossier local, ajoutez:
