@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: "https://fanilonimadagasikara.mg:3000/api",
+    apiUrl: "https://fanilonimadagasikara.mg/api",
 };
