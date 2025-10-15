@@ -3,42 +3,38 @@ name: Deploy Frontend
 on:
   push:
     branches:
-      - main # Le workflow se déclenche quand des changements sont poussés sur la branche 'main'
+      - main 
 
 jobs:
   build_and_deploy:
-    runs-on: ubuntu-latest # Le type de machine virtuelle qui va exécuter le job
-
+    runs-on: ubuntu-latest
     steps:
       - name: Cloner le dépôt
-        uses: actions/checkout@v4 # Action pour récupérer votre code depuis GitHub
+        uses: actions/checkout@v4 
 
       - name: Configurer Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19.0' # Utilisez la version de Node.js de votre projet
+          node-version: '20.19.0' 
 
       - name: Installer les dépendances Angular CLI et du projet
         run: |
-          npm install -g @angular/cli # Installe Angular CLI sur la machine virtuelle
-          npm install # Installe les dépendances de votre projet
+          npm install -g @angular/cli 
+          npm install
 
       - name: Compiler application Angular pour la production
-        run: ng build --configuration=production # Construit l'application, les fichiers sont dans `dist/nom-de-votre-app`
-
+        run: ng build --configuration production --base-href=/ --deploy-url=/frontend/
+        
       - name: Récupérer le nom du projet Angular (pour le dossier dist)
         id: get_app_name
-        run: echo "APP_NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV # Lit le nom de votre projet depuis package.json
+        run: echo "APP_NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV 
 
       - name: Déployer sur le serveur via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.0 # Action GitHub pour le déploiement FTP/SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0 
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp # Utilisez 'sftp' pour une connexion sécurisée. Changez à 'ftp' si SFTP n'est pas disponible.
-          local-dir: ./dist/fanilovitrine/browser/ # Chemin vers les fichiers compilés de votre application Angular
-          server-dir: ${{ secrets.FTP_REMOTE_PATH }} # Le chemin sur votre serveur où les fichiers doivent être placés
-          # Important : Si vous voulez que les fichiers existants soient remplacés, 'overwrite: true' est souvent le défaut.
-          # Si vous voulez supprimer les fichiers sur le serveur qui ne sont plus dans votre dossier local, ajoutez:
-          # delete-excluded: true # À utiliser avec PRUDENCE, car cela supprime tout ce qui n'est pas dans votre dossier 'dist' sur le serveur.
+          protocol: ftp 
+          local-dir: ./dist/fanilovitrine/browser/ 
+          server-dir: ${{ secrets.FTP_REMOTE_PATH }} 
