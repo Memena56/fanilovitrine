@@ -14,10 +14,15 @@ export class AboutLeadersComponent implements OnInit {
   aumoniers: Gouvernance[] = [];
   commissaires: Gouvernance[] = [];
   loading = true;
+  animationClass = 'page-enter';
 
   constructor(private aboutService: AboutService) {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.animationClass = 'page-enter page-enter-active';
+    }, 50);
+
     this.aboutService.getGouvernances().subscribe({
       next: (data) => {
         const sorted = data.sort((a,b) => a.startYear - b.startYear);

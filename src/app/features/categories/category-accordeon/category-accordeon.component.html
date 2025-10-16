@@ -1,29 +1,36 @@
-<ul class="space-y-1 text-sm text-white font-medium">
+<ul class="space-y-2 text-sm font-medium text-white">
   <ng-container *ngFor="let category of categories">
     <li>
-      <div class="flex items-center justify-between py-2 px-3 rounded cursor-pointer hover:bg-white/10 transition group">
-        <span class="flex items-center gap-2 w-full"
-              (click)="selectCategory(category._id)">
-          <span class="group-hover:text-indigo-300 font-semibold">
+      <div
+        class="flex items-center justify-between py-2 px-4 rounded-lg cursor-pointer transition group bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-900 hover:bg-white/5 shadow-sm"
+        (click)="selectCategory(category._id)"
+        [class.bg-indigo-500]="selectedCategoryIds.includes(category._id)"
+        [class.text-indigo-100]="selectedCategoryIds.includes(category._id)"
+
+      >
+        <span class="flex items-center gap-2 w-full">
+          <span class="group-hover:text-indigo-300 font-semibold transition-colors duration-200">
             {{ category.name }}
           </span>
         </span>
-
-        <!-- ▼ Flèche pour ouvrir les enfants -->
-        <button *ngIf="category.children?.length"
-                (click)="toggleExpand(category._id); $event.stopPropagation()"
-                class="ml-2 focus:outline-none">
-          <svg class="w-4 h-4 text-white transform transition-transform duration-200"
-               [ngClass]="{'rotate-90': isExpanded(category._id)}"
-               fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <button
+          *ngIf="category.children?.length"
+          (click)="toggleExpand(category._id); $event.stopPropagation()"
+          class="ml-2 focus:outline-none flex items-center"
+        >
+          <svg
+            class="w-5 h-5 text-indigo-200 transform transition-transform duration-200"
+            [ngClass]="{'rotate-90': isExpanded(category._id)}"
+            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          >
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
-
-      <!-- 🔽 Sous-catégories -->
-      <div *ngIf="category.children?.length && isExpanded(category._id)"
-           class="pl-4 ml-2 border-l border-gray-300 mt-1">
+      <div
+        *ngIf="category.children?.length && isExpanded(category._id)"
+        class="pl-6 ml-2 border-l-2 border-indigo-400 bg-indigo-800/30 rounded-lg my-2 transition-all duration-300"
+      >
         <app-category-accordeon
           [categories]="category.children || []"
           [selectedCategoryIds]="selectedCategoryIds"
