@@ -1,110 +1,70 @@
-<div class="container mx-auto px-4 py-6 relative font-sans text-[#2A255E]">
-
-    <!-- BOUTON HAMBURGER (mobile uniquement) -->
-    <button class="lg:hidden mb-4 flex items-center gap-2 text-indigo-600"
-            (click)="toggleMenu()">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      Ny vokatra misy
-    </button>
-
-    <!-- BACKDROP flou + sombre (clic = fermeture du menu) -->
-    <div *ngIf="isMenuOpen"
-        class="fixed inset-0 backdrop-blur-sm z-30"
-        (click)="closeMenu()">
-    </div>
-
-    <!-- MENU LATERAL MOBILE -->
-    <aside *ngIf="isMenuOpen"
-          class="fixed top-0 left-0 w-64 h-full bg-[#1b2451] shadow-lg p-4 z-40 overflow-y-auto transition-transform transform duration-300 ease-in-out lg:hidden">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl font-semibold text-white mb-4 tracking-tight">Ny vokatra misy</h2>
-        <button (click)="closeMenu()" class="text-gray-500 hover:text-red-500 text-xl">&times;</button>
+<section class="relative isolate overflow-hidden px-4 py-8 sm:px-6 sm:py-12 lg:px-12 font-sans">
+  <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-4 lg:gap-12">
+    <!-- SIDEBAR (Accordion / Filtering) -->
+    <aside class="mb-8 lg:mb-0 lg:col-span-1 lg:sticky lg:top-24 self-start">
+      <div class="bg-gradient-to-br from-indigo-900/80 via-purple-800/60 to-indigo-700/80 rounded-2xl shadow-md p-6 border border-white/10 backdrop-blur">
+        <h2 class="text-xl font-semibold text-white mb-6">Ny vokatra misy</h2>
+        <app-category-accordeon
+          [categories]="categoriesTrees"
+          [selectedCategoryIds]="selectedCategoryIds"
+          (categoryFilterChange)="onCategoryFilterChange($event)">
+        </app-category-accordeon>
       </div>
-      <app-category-accordeon
-        [categories]="categoriesTrees"
-        [selectedCategoryIds]="selectedCategoryIds"
-        (categoryFilterChange)="onCategoryFilterChange($event)">
-      </app-category-accordeon>
     </aside>
 
-    <!-- GRILLE PRINCIPALE -->
-    <div class="flex flex-col lg:flex-row gap-8">
-
-      <!-- MENU LATÉRAL FIXE (desktop uniquement) -->
-    <aside
-      class="hidden lg:block w-64 flex-shrink-0 bg-[#1b2451] text-white font-semibold h-screen sticky top-0 overflow-y-auto p-4 rounded-lg shadow"
-    >
-      <h2 class="text-xl font-semibold text-white mb-4 tracking-tight">Ny vokatra misy</h2>
-
-      <app-category-accordeon
-        [categories]="categoriesTrees"
-        [selectedCategoryIds]="selectedCategoryIds"
-        (categoryFilterChange)="onCategoryFilterChange($event)">
-      </app-category-accordeon>
-    </aside>
-
-      <!-- COLONNE DES ARTICLES -->
-      <div class="flex-1">
-
-        <!-- Carrousel -->
-        <div class="relative w-full h-64 mb-6 rounded-xl overflow-hidden">
-          <div class="flex w-full h-full transition-transform duration-500 ease-in-out"
-              [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
-            <div *ngFor="let a of articles.slice(0,3)" class="w-full flex-shrink-0 h-64">
-              <img [src]="a.images[0]" class="w-full h-full object-cover rounded-xl" />
-            </div>
+    <!-- MAIN ARTICLE GRID -->
+    <div class="lg:col-span-3 space-y-8">
+      <!-- Carrousel -->
+      <div class="relative w-full h-64 rounded-2xl overflow-hidden mb-8">
+        <div class="flex w-full h-full transition-transform duration-500 ease-in-out"
+             [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
+          <div *ngFor="let a of articles.slice(0,3)" class="w-full flex-shrink-0 h-64">
+            <img [src]="a.images[0]" class="w-full h-full object-cover rounded-2xl" />
           </div>
-          <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 p-2"
-                  (click)="prevSlide()">‹</button>
-          <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 p-2"
-                  (click)="nextSlide()">›</button>
         </div>
+        <button class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow" (click)="prevSlide()">‹</button>
+        <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow" (click)="nextSlide()">›</button>
+      </div>
 
-        <!-- Barre de recherche -->
-        <div class="flex flex-wrap justify-between items-center mb-4 gap-4">
-          <input [(ngModel)]="searchTerm" (input)="onSearchChange()"
-                type="text" placeholder="Mitady vokatra..."
-                class="border rounded px-4 py-2 w-full md:w-1/2" />
-
-          <button
-            class="p-2 border border-indigo-600 rounded hover:bg-indigo-600 hover:text-white text-indigo-600 transition"
+      <!-- Barre de recherche -->
+      <div class="flex flex-wrap justify-between items-center mb-4 gap-4">
+        <input [(ngModel)]="searchTerm" (input)="onSearchChange()"
+          type="text" placeholder="Mitady vokatra..."
+          class="border border-indigo-200 rounded-lg px-4 py-2 w-full md:w-1/2 focus:ring-2 focus:ring-indigo-300 transition" />
+        <button class="p-2 border border-indigo-600 rounded-lg hover:bg-indigo-600 hover:text-white text-indigo-600 transition"
             (click)="goToArticlesDashboardOrLogin()"
-            title="Hampiditra vokatra vaovao"
-          >
-            <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 4v1m0 14v1m8.66-6.66l-.71.71M4.05 4.05l.71.71M21 12h-1M4 12H3m2.34 6.66l-.71-.71M19.95 4.05l-.71.71M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-            </svg>
-          </button>
-        </div>
+            title="Hampiditra vokatra vaovao">
+          <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 4v1m0 14v1m8.66-6.66l-.71.71M4.05 4.05l.71.71M21 12h-1M4 12H3m2.34 6.66l-.71-.71M19.95 4.05l-.71.71M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </button>
+      </div>
 
-        <!-- Liste des articles -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div *ngFor="let a of filteredArticles"
-              class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition cursor-pointer h-auto"
-              (click)="goToDetail(a.slug)">
-            <img [src]="a.images[0]" class="w-full h-40 object-contain object-center rounded-lg mb-2 bg-white" />
-            <h5 class="font-bold truncate">{{ a.title }}</h5>
+      <!-- Liste des articles -->
+      <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+        <div *ngFor="let a of filteredArticles"
+          class="bg-white border border-gray-50 rounded-2xl overflow-hidden cursor-pointer shadow transition hover:shadow-xl hover:-translate-y-1 hover:bg-indigo-50/60 duration-400"
+          (click)="goToDetail(a.slug)">
+          <img [src]="a.images[0]" class="h-48 w-full object-contain object-center rounded-t-2xl bg-white" />
+          <div class="p-5">
+            <h5 class="font-bold text-gray-900 truncate mb-1">{{ a.title }}</h5>
             <p class="text-sm text-gray-500">{{ a.price }} {{ a.currency }}</p>
           </div>
         </div>
+      </div>
 
-        <!-- Pagination -->
-        <div class="flex justify-center mt-6 gap-2">
-          <button *ngFor="let p of [].constructor(totalPages); let i = index"
-                  (click)="goToPage(i+1)"
-                  [class.bg-blue-600]="currentPage===i+1"
-                  [class.text-white]="currentPage===i+1"
-                  class="px-3 py-1 rounded border hover:bg-blue-100">
-            {{ i+1 }}
-          </button>
-        </div>
-
+      <!-- Pagination -->
+      <div class="flex flex-wrap justify-center items-center gap-4 mt-10">
+        <button *ngFor="let p of [].constructor(totalPages); let i = index"
+                (click)="goToPage(i+1)"
+                [class.bg-indigo-600]="currentPage===i+1"
+                [class.text-white]="currentPage===i+1"
+                class="px-4 py-2 rounded-lg text-sm border border-indigo-500 text-indigo-600 hover:bg-indigo-100 transition">
+          {{ i+1 }}
+        </button>
       </div>
     </div>
-</div>
+  </div>
+</section>
