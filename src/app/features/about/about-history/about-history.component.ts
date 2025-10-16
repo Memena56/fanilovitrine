@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AboutSidebarComponent } from '../about-sidebar/about-sidebar.component';
 
@@ -8,4 +8,12 @@ import { AboutSidebarComponent } from '../about-sidebar/about-sidebar.component'
   templateUrl: './about-history.component.html',
   styleUrl: './about-history.component.css'
 })
-export class AboutHistoryComponent {}
+export class AboutHistoryComponent implements OnInit {
+  animationClass = 'page-enter';
+
+  ngOnInit(): void {
+      setTimeout(() => {
+        this.animationClass = 'page-enter page-enter-active';
+      }, 50);
+  }
+}

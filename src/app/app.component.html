@@ -2,8 +2,8 @@
   <app-header *ngIf="showHeaderFooter"></app-header>
   <app-breadcrumb *ngIf="showBreadCrumb"></app-breadcrumb>
 
-  <main class="flex-1">
-    <router-outlet></router-outlet>
+  <main [@routeAnimations]="getOutletState(outlet)" class="flex-1">
+    <router-outlet #outlet="outlet"></router-outlet>
   </main>
 
   <app-footer *ngIf="showHeaderFooter"></app-footer>

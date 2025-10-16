@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Event } from '../app/features/events/events.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +22,27 @@ import { Event } from '../app/features/events/events.service';
     RouterModule
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('routeAnimations', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(10px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      transition(':leave', [
+        animate('300ms ease', style({ opacity: 0, transform: 'translateY(-10px)' })),
+      ]),
+    ]),
+  ],
 })
 export class AppComponent {
   title = 'fanilovitrine';
   showBreadCrumb = true;
   showHeaderFooter = true;
+
+  getOutletState(outlet: any) {
+    return outlet.activatedRouteData['animation'] || outlet.isActivated ? outlet.activatedRoute : '';
+  }
 
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
