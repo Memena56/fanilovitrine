@@ -1,6 +1,38 @@
-    .breadcrumb a {
-    text-decoration: none;
-    }
-    .breadcrumb a:hover {
+.breadcrumb-modern {
+    background: #ffe232;
+    color: #21205a;
+    padding: 1.25rem 1.5rem;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    border: none;
+}
+
+.breadcrumb-modern ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-modern li:not(:last-child) a {
+    color: #21205a;
     text-decoration: underline;
-    }
+    transition: color 0.2s;
+}
+.breadcrumb-modern li:not(:last-child) a:hover {
+    color: #f58220;
+}
+
+.breadcrumb-modern .breadcrumb-separator {
+    margin: 0 8px;
+    color: #21205a;
+    font-weight: bold;
+}
+
+.breadcrumb-modern .active {
+    font-weight: 700;
+    color: #21205a;
+}
