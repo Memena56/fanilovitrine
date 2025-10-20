@@ -16,11 +16,11 @@ export class AboutSidebarComponent {
 
   links = [
     { path: 'mombamomba/tantara', label: "Tantaran'ny Fikambanana" },
-    { path: 'mombamomba/mpitondra', label: "Ireo Aomonie sy Filoha Iombonana nifandimby" },
-    { path: 'mombamomba/aim-panahy', label: "Ny lovam-panahin'ny Fikambanana" },
+    { path: 'mombamomba/mpitondra', label: "Aomonie sy Filoha Iombonana nifandimby" },
+    { path: 'mombamomba/aim-panahy', label: "Lovam-panahin'ny Fikambanana" },
     { path: 'mombamomba/rafitra', label: "Rafitra sy Mpikambana" },
-    { path: 'mombamomba/diosezy', label: "Ireo diosezy misy Fanilon'i Madagasikara" },
-    { path: 'lahasa', label: "Ny ataonay" }
+    { path: 'mombamomba/diosezy', label: "Diosezy misy Fanilon'i Madagasikara" },
+    { path: 'lahasa', label: "Lahasan'ny Fikambanana" }
   ];
 
   constructor(private router: Router) {
@@ -34,7 +34,7 @@ export class AboutSidebarComponent {
   }
 
   navigateTo(path: string) {
-    this.isOpen = false; // ferme le dropdown en mobile
+    this.isOpen = false;
     this.router.navigateByUrl(path);
   }
 }
