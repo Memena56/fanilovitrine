@@ -1,41 +1,45 @@
-<!-- news-dashboard.component.html -->
+<!-- news-dashboard.component.html modernisé -->
 <section class="max-w-6xl mx-auto px-4 py-8 font-sans">
   <!-- Header -->
-  <div class="flex justify-between items-center mb-6">
-    <h2 class="text-3xl font-bold text-[#2A255E]">VAOVAO</h2>
-    <button (click)="openForm()" class="bg-[#2A255E] text-white px-4 py-2 rounded hover:bg-[#3a3670] cursor-pointer">
-      + Hampiditra vaovao
-    </button>
-    <button (click)="logout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer">
-      Miala
-    </button>
+  <div class="flex justify-between items-center mb-6 gap-3">
+    <h2 class="text-3xl font-extrabold text-[#2A255E] tracking-tight">VAOVAO</h2>
+    <div class="flex gap-2">
+      <button (click)="openForm()"
+        class="inline-flex items-center gap-2 bg-[#2A255E] text-[#FFD600] font-bold px-4 py-2 rounded-lg shadow hover:bg-[#FFD600] hover:text-[#2A255E] transition duration-150">
+        <span class="inline-block text-[#2A255E] bg-[#FFD600] rounded-full w-6 h-6 flex justify-center items-center font-bold text-lg mr-1">+</span>
+        Hampiditra vaovao
+      </button>
+      <button (click)="logout()"
+        class="inline-flex items-center bg-red-600 text-white font-normal px-4 py-2 rounded-lg shadow hover:bg-red-700 transition duration-150">
+        Miala
+      </button>
+    </div>
   </div>
 
-  <!-- Liste des actualités sous forme de tableau -->
+  <!-- Tableau des actualités -->
   <div class="overflow-auto">
-    <table class="min-w-full bg-white border rounded-lg shadow font-sans">
+    <table class="min-w-full bg-white border-2 border-[#FFD600] rounded-lg shadow font-sans">
       <thead>
-        <tr class="bg-[#2A255E] text-white text-sm">
-          <th class="px-4 py-2 text-left">Daty</th>
-          <th class="px-4 py-2 text-left">Lohateny</th>
-          <th class="px-4 py-2 text-left">Topi-maso</th>
-          <th class="px-4 py-2 text-right">Fikirakirana</th>
+        <tr class="bg-[#2A255E] text-[#FFD600] text-sm">
+          <th class="px-4 py-2 text-left font-bold">Daty</th>
+          <th class="px-4 py-2 text-left font-bold">Lohateny</th>
+          <th class="px-4 py-2 text-left font-bold">Topi-maso</th>
+          <th class="px-4 py-2 text-right font-bold">Fikirakirana</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let news of allNews" class="border-t text-sm">
-          <td class="px-4 py62 font-semibold">{{ news.date | date: 'dd/MM/yyyy'}}</td>
+        <tr *ngFor="let news of allNews" class="border-t hover:bg-[#FFFDE7] transition duration-150 text-sm">
+          <td class="px-4 py-2 font-semibold">{{ news.date | date: 'dd/MM/yyyy'}}</td>
           <td class="px-4 py-2 font-semibold">{{ news.title }}</td>
           <td class="px-4 py-2 text-gray-700">{{ news.introduction }}</td>
           <td class="px-4 py-2 text-right flex gap-2 justify-end">
-            <button (click)="editNews(news)" class="text-indigo-600 hover:text-indigo-800 cursor-pointer" title="Hanova">
+            <button (click)="editNews(news)" class="text-[#2A255E] hover:text-[#FFD600] font-bold transition" title="Hanova">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20h9" />
                 <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
               </svg>
-
             </button>
-            <button (click)="deleteNews(news._id)" class="text-red-600 hover:text-red-800 cursor-pointer" title="Hamafa">
+            <button (click)="deleteNews(news._id)" class="text-red-600 hover:text-red-800 font-bold transition" title="Hamafa">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 6h18" />
                 <path d="M8 6v12a2 2 0 002 2h4a2 2 0 002-2V6" />
@@ -43,7 +47,6 @@
                 <path d="M14 11v6" />
                 <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2" />
               </svg>
-
             </button>
           </td>
         </tr>
@@ -52,85 +55,75 @@
   </div>
 </section>
 
-<!-- Modal -->
+<!-- Modal Form modernisé -->
 <div *ngIf="isFormOpen" class="fixed inset-0 bg-[#2A255E]/20 backdrop-blur-sm flex items-center justify-center z-50 font-sans">
-  <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl p-6 relative max-h-[90vh] overflow-y-auto">
-    <!-- Fermer -->
-    <button (click)="closeForm()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl cursor-pointer">&times;</button>
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl p-6 relative max-h-[90vh] overflow-y-auto border-2 border-[#FFD600]">
+    <button (click)="closeForm()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl cursor-pointer">
+      &times;
+    </button>
 
-    <h3 class="text-xl font-bold mb-4">{{ isEditing ? 'Hanova vaovao' : 'Hampiditra vaovao' }}</h3>
+    <h3 class="text-2xl font-extrabold mb-4 text-[#2A255E]">
+      {{ isEditing ? 'Hanova vaovao' : 'Hampiditra vaovao' }}
+    </h3>
 
     <form (ngSubmit)="submitNews()" class="grid gap-6 md:grid-cols-2">
       <!-- Titre -->
-      <div class="relative">
-        <input type="text" id="title" [(ngModel)]="title" name="title"
-              class="peer block w-full appearance-none border border-gray-300 rounded-lg px-3 pt-5 pb-2.5 text-sm focus:border-[#2A255E] focus:outline-none focus:ring-0"
-              placeholder=" " required />
-        <label for="title"
-              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">Lohateny</label>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-[#2A255E]">Lohateny</label>
+        <input type="text" [(ngModel)]="title" name="title" required
+          class="w-full border border-[#FFD600] px-3 py-2 rounded focus:ring-[#FFD600] focus:border-[#FFD600]" />
       </div>
-
       <!-- Date -->
-      <div class="relative">
-        <input type="date" id="date" [(ngModel)]="date" name="date"
-              class="peer block w-full appearance-none border border-gray-300 rounded-lg px-3 pt-5 pb-2.5 text-sm focus:border-[#2A255E] focus:outline-none focus:ring-0"
-              placeholder=" " />
-        <label for="date"
-              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2">Daty</label>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-[#2A255E]">Daty</label>
+        <input type="date" [(ngModel)]="date" name="date"
+          class="w-full border border-[#FFD600] px-3 py-2 rounded focus:ring-[#FFD600] focus:border-[#FFD600]" />
       </div>
-
       <!-- Introduction -->
       <div class="md:col-span-2">
-        <label class="block mb-1 font-medium">Topi-maso</label>
-        <textarea [(ngModel)]="introduction" name="introduction" rows="3" class="w-full border rounded px-3 py-2" required></textarea>
+        <label class="block mb-1 font-medium text-[#2A255E]">Topi-maso</label>
+        <textarea [(ngModel)]="introduction" name="introduction" rows="3"
+          class="w-full border border-[#FFD600] px-3 py-2 rounded focus:ring-[#FFD600] focus:border-[#FFD600]" required></textarea>
       </div>
-
       <!-- Catégories -->
       <div class="md:col-span-2">
-        <label class="block mb-1 font-medium">Sokajy</label>
+        <label class="block mb-1 font-medium text-[#2A255E]">Sokajy</label>
         <div class="flex flex-wrap gap-2">
           <label *ngFor="let cat of categories" class="flex items-center gap-2">
             <input type="checkbox" [value]="cat" (change)="onCategoryChange($event, cat)"
-                  [checked]="categoryInput.includes(cat)" class="text-[#2A255E]" />
+              [checked]="categoryInput.includes(cat)" class="text-[#2A255E]" />
             <span class="text-sm">{{ cat }}</span>
           </label>
         </div>
       </div>
-
       <!-- Photo principale -->
       <div class="md:col-span-2">
-        <label class="block mb-1 font-medium">Sary lehibe</label>
-
+        <label class="block mb-1 font-medium text-[#2A255E]">Sary lehibe</label>
         <input #mainPhotoInput type="file" (change)="onPhotoSelected($event)" accept="image/*" class="hidden" />
-
         <button type="button"
           (click)="mainPhotoInput.click()"
-          class="bg-[#2A255E] text-white px-4 py-2 rounded hover:bg-[#3a3670]">
+          class="bg-[#2A255E] text-[#FFD600] font-bold px-4 py-2 rounded-lg shadow hover:bg-[#FFD600] hover:text-[#2A255E] transition">
           Hisafidy sary lehibe
         </button>
-
-        <!-- Aperçu photo choisie -->
         <div *ngIf="mainPhotoPreview" class="mt-2 relative w-fit group">
           <img [src]="mainPhotoPreview" alt="Aperçu" class="w-32 mt-1 rounded shadow" />
           <button type="button" (click)="removeSelectedMainPhoto()"
-                  class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs hidden group-hover:block">&times;</button>
+            class="absolute -top-2 -right-2 bg-[#FFD600] text-[#2A255E] font-bold rounded-full w-5 h-5 text-xs hidden group-hover:block">
+            &times;
+          </button>
         </div>
-
-        <!-- Aperçu photo existante si en mode édition et pas de nouvelle sélection -->
         <div *ngIf="isEditing && editingPhoto && !mainPhotoPreview" class="mt-2">
           <p class="text-sm text-gray-600">Sary ankehitriny :</p>
           <img [src]="editingPhoto" alt="Sary lehibe" class="w-32 mt-1 rounded shadow" />
         </div>
       </div>
-
-
       <!-- Autres photos -->
       <div class="md:col-span-2">
-        <label class="block mb-1 font-medium">Sary hafa</label>
+        <label class="block mb-1 font-medium text-[#2A255E]">Sary hafa</label>
         <input #otherFileInput type="file" (change)="onOtherPhotosSelected($event)" multiple accept="image/*" class="hidden"/>
         <button type="button"
           (click)="otherFileInput.click()"
-          class="bg-[#2A255E] text-white px-4 py-2 rounded hover:bg-[#3a3670]">
+          class="bg-[#2A255E] text-[#FFD600] font-bold px-4 py-2 rounded-lg shadow hover:bg-[#FFD600] hover:text-[#2A255E] transition">
           Hisafidy sary hafa
         </button>
         <div *ngIf="othersPhotosPreview.length > 0" class="mt-2">
@@ -139,37 +132,39 @@
             <div *ngFor="let preview of othersPhotosPreview; let i = index" class="relative group">
               <img [src]="preview" class="w-20 h-20 object-cover rounded shadow" />
               <button type="button" (click)="removeSelectedOtherPhoto(i)"
-                      class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs hidden group-hover:block">
+                class="absolute -top-2 -right-2 bg-[#FFD600] text-[#2A255E] font-bold rounded-full w-5 h-5 text-xs hidden group-hover:block">
                 &times;
               </button>
             </div>
           </div>
         </div>
-
         <div *ngIf="editingOtherPhotos.length > 0" class="mt-2">
           <p class="text-sm text-gray-600">Sary hafa ankehitriny :</p>
           <div class="flex flex-wrap gap-2 mt-1">
             <div *ngFor="let p of editingOtherPhotos; let i = index" class="relative group">
               <img [src]="p" class="w-20 h-20 object-cover rounded shadow" />
               <button type="button" (click)="removeExistingOtherPhoto(i)"
-                      class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs hidden group-hover:block">&times;</button>
+                class="absolute -top-2 -right-2 bg-[#FFD600] text-[#2A255E] font-bold rounded-full w-5 h-5 text-xs hidden group-hover:block">
+                &times;
+              </button>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Votoaty -->
       <div class="md:col-span-2">
-        <label class="block mb-1 font-medium">Votoatiny</label>
-        <ngx-editor [(ngModel)]="content" name="content" [editor]="editor" placeholder=""></ngx-editor>
+        <label class="block mb-1 font-medium text-[#2A255E]">Votoatiny</label>
+        <div class="prose max-w-none focus:ring-[#FFD600] focus:border-[#FFD600]">
+          <ngx-editor [(ngModel)]="content" name="content" [editor]="editor" placeholder=""></ngx-editor>
+        </div>
       </div>
-
       <!-- Boutons -->
-      <div class="md:col-span-2 flex justify-between items-center">
-        <button type="submit" class="bg-[#2A255E] text-white px-6 py-2 rounded hover:bg-[#3a3670] cursor-pointer">
+      <div class="md:col-span-2 flex justify-between items-center mt-4">
+        <button type="submit"
+          class="bg-[#FFD600] text-[#2A255E] font-bold px-6 py-2 rounded-lg shadow hover:bg-[#2A255E] hover:text-white transition">
           {{ isEditing ? 'Hanova' : 'Hampiditra' }}
         </button>
-        <button *ngIf="isEditing" type="button" (click)="cancelEdit()" class="text-sm text-gray-500 hover:underline ">
+        <button *ngIf="isEditing" type="button" (click)="cancelEdit()" class="text-sm text-gray-500 hover:text-[#FFD600] hover:underline cursor-pointer">
           Aoka ihany
         </button>
       </div>

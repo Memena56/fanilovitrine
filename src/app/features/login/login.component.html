@@ -1,96 +1,96 @@
 <section class="min-h-screen flex items-center justify-center p-6">
 
-  <!-- Bloc de connexion -->
-  <div
-    class="w-full max-w-md bg-white border border-gray-200 p-6 sm:p-8 rounded-2xl shadow-lg ring-2 ring-[#2A255E]/20 fade-in-up z-10 font-sans">
-    <h2 class="text-2xl sm:text-3xl font-bold text-center text-[#2A255E] mb-6 sm:mb-8 tracking-wide">Hiditra</h2>
+    <!-- Bloc de connexion -->
+    <div
+        class="w-full max-w-md bg-white border border-gray-200 p-6 sm:p-8 rounded-2xl shadow-lg ring-2 ring-[#2A255E]/20 fade-in-up z-10 font-sans">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center text-[#2A255E] mb-6 sm:mb-8 tracking-wide">Hiditra</h2>
 
-    <form (ngSubmit)="onSubmit()" class="space-y-5 sm:space-y-6">
-      <!-- Identifiant -->
-        <div class="relative">
-            <input
-                [(ngModel)]="username"
-                name="username"
-                type="text"
-                id="username"
-                required
-                placeholder=" "
-                class="peer block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-md border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#2A255E]"
-            />
-            <label
-                for="username"
-                class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2"
-            >
-                Anarana
-            </label>
-        </div>
+        <form (ngSubmit)="onSubmit()" class="space-y-5 sm:space-y-6">
+        <!-- Identifiant -->
+            <div class="relative">
+                <input
+                    [(ngModel)]="username"
+                    name="username"
+                    type="text"
+                    id="username"
+                    required
+                    placeholder=" "
+                    class="peer block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-md border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#2A255E]"
+                />
+                <label
+                    for="username"
+                    class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2"
+                >
+                    Anarana
+                </label>
+            </div>
 
-        <div class="relative mt-6">
-            <input
-                [(ngModel)]="password"
-                name="password"
-                [type]="passwordVisible ? 'text' : 'password'"
-                id="password"
-                required
-                placeholder=" "
-                class="peer block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-md border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#2A255E]"
-            />
-            <label
-                for="password"
-                class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2"
-            >
-                Teny miafina
-            </label>
-            <!-- Icône œil -->
-            <button type="button" (click)="togglePasswordVisibility()"
-            class="absolute right-3 top-3 text-gray-500 hover:text-gray-700 focus:outline-none">
-            <svg *ngIf="!passwordVisible" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            <svg *ngIf="passwordVisible" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.07-3.338M9.88 9.88a3 3 0 104.243 4.243M3 3l18 18" />
-            </svg>
+            <div class="relative mt-6">
+                <input
+                    [(ngModel)]="password"
+                    name="password"
+                    [type]="passwordVisible ? 'text' : 'password'"
+                    id="password"
+                    required
+                    placeholder=" "
+                    class="peer block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-md border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#2A255E]"
+                />
+                <label
+                    for="password"
+                    class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2"
+                >
+                    Teny miafina
+                </label>
+                <!-- Icône œil -->
+                <button type="button" (click)="togglePasswordVisibility()"
+                class="absolute right-3 top-3 text-gray-500 hover:text-gray-700 focus:outline-none">
+                <svg *ngIf="!passwordVisible" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <svg *ngIf="passwordVisible" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.07-3.338M9.88 9.88a3 3 0 104.243 4.243M3 3l18 18" />
+                </svg>
+                </button>
+            </div>
+
+        <!-- Bouton -->
+            <button
+                type="submit"
+                [disabled]="isLoading"
+                class="w-full flex items-center justify-center gap-2 bg-[#2A255E] text-white py-2 rounded-md font-semibold hover:bg-[#3a3670] transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                <svg
+                    *ngIf="isLoading"
+                    class="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                >
+                    <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    ></circle>
+                    <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8z"
+                    ></path>
+                </svg>
+                <span>{{ isLoading ? 'Miandry...' : 'Hiditra' }}</span>
             </button>
-        </div>
 
-      <!-- Bouton -->
-        <button
-            type="submit"
-            [disabled]="isLoading"
-            class="w-full flex items-center justify-center gap-2 bg-[#2A255E] text-white py-2 rounded-md font-semibold hover:bg-[#3a3670] transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-            <svg
-                *ngIf="isLoading"
-                class="animate-spin h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-            >
-                <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-                ></circle>
-                <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v8z"
-                ></path>
-            </svg>
-            <span>{{ isLoading ? 'Miandry...' : 'Hiditra' }}</span>
-        </button>
-
-      <!-- Message d’erreur -->
-      <p *ngIf="error" class="text-red-500 text-sm mt-4 text-center">{{ error }}</p>
-    </form>
-  </div>
+        <!-- Message d’erreur -->
+        <p *ngIf="error" class="text-red-500 text-sm mt-4 text-center">{{ error }}</p>
+        </form>
+    </div>
 </section>
