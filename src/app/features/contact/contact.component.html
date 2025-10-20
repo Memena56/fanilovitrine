@@ -1,12 +1,12 @@
-<section class="bg-white min-h-screen flex flex-col lg:flex-row">
+    <section class="bg-gradient-to-br from-[#21205a]/80 via-[#36357a]/60 to-[#191846]/80 min-h-screen flex flex-col lg:flex-row">
     <!-- Côté gauche : image + texte centré -->
     <div class="lg:w-1/2 relative flex-1 flex items-center justify-center overflow-hidden">
-        <img src="https://res.cloudinary.com/daouxsiw3/image/upload/v1759501291/fanilovitrine/files-1759501289032.jpg"
-            alt="Ivotoeran'ny Maherifo"
-            class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105">
-        <div class="relative z-10 text-center p-8 bg-black/30 rounded-md animate-fade-up">
-        <h2 class="text-4xl font-extrabold text-white mb-4">Ivotoeran'ny Maherifo</h2>
-        <p class="text-white/90 text-lg leading-relaxed">
+        <img src="/frontend/assets/ivotoerana.jpg"
+        alt="Ivotoeran'ny Maherifo"
+        class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 hover:scale-105 blur-lg opacity-60">
+        <div class="relative z-10 text-center p-8 bg-[#21205a]/60 rounded-xl shadow-lg backdrop-blur-md animate-fade-up">
+        <h2 class="text-4xl font-extrabold text-white drop-shadow mb-4">Ivotoeran'ny Maherifo</h2>
+        <p class="text-white/80 text-lg leading-relaxed drop-shadow">
             Ivotoerana iray ahafahan'ny Fanilo sy ireo mpiara-miasa, mpiara-miombon'antoka, ray aman-dreny ary Fiarahamonina,
             mitady fihainoana rehefa ilaina izany; mampahafantatra na mitoroka izay zava-mitranga any aminy manoloana ireo tsy rariny, tsindry hazo lena ary herisetra isan-karazany.
         </p>
@@ -14,26 +14,26 @@
     </div>
 
     <!-- Côté droit : formulaire -->
-    <div class="lg:w-1/2 flex-1 p-12 relative">
+    <div class="lg:w-1/2 flex-1 p-12 bg-white/80 rounded-xl shadow-lg">
         <!-- Bouton discret dashboard -->
         <button (click)="goToDashboardOrLogin()"
-                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer transition"
-                title="Admin Dashboard">
+        class="absolute top-4 right-4 text-indigo-400 hover:text-indigo-700 focus:outline-none transition"
+        title="Admin Dashboard">
         <svg xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="w-5 h-5">
+            stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round"
-                d="M10.5 6h3M4.5 12h15m-7.5 6h3" />
+            d="M10.5 6h3M4.5 12h15m-7.5 6h3" />
         </svg>
         </button>
 
-        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-6 animate-fade-up">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-8 animate-fade-up">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
 
             <div>
-            <label class="block text-sm font-semibold text-gray-900">Lahy/Vavy</label>
+            <label class="block text-sm font-semibold text-[#21205a]">Lahy/Vavy</label>
             <select [(ngModel)]="contactData.genre" name="genre"
-                    class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition">
                 <option value="lahy">Lahy</option>
                 <option value="vavy">Vavy</option>
                 <option value="tsy-ambara">Tsy ambara</option>
@@ -41,33 +41,33 @@
             </div>
 
             <div>
-            <label class="block text-sm font-semibold text-gray-900">Taona</label>
+            <label class="block text-sm font-semibold text-[#21205a]">Taona</label>
             <input type="number" name="age" [(ngModel)]="contactData.age" min="0" max="120"
-                    class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition">
             </div>
 
             <div class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-                <label class="block text-sm font-semibold text-gray-900">Fivondronana</label>
+                <label class="block text-sm font-semibold text-[#21205a]">Fivondronana</label>
                 <input type="text" name="fivondronana" [(ngModel)]="contactData.fivondronana"
-                    class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition">
             </div>
             <div>
-                <label class="block text-sm font-semibold text-gray-900">Faritra</label>
+                <label class="block text-sm font-semibold text-[#21205a]">Faritra</label>
                 <input type="text" name="faritra" [(ngModel)]="contactData.faritra"
-                    class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition">
             </div>
             <div>
-                <label class="block text-sm font-semibold text-gray-900">Diosezy</label>
+                <label class="block text-sm font-semibold text-[#21205a]">Diosezy</label>
                 <input type="text" name="diosezy" [(ngModel)]="contactData.diosezy"
-                    class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition">
             </div>
             </div>
 
             <div class="sm:col-span-2">
-            <label class="block text-sm font-semibold text-gray-900">Antony</label>
+            <label class="block text-sm font-semibold text-[#21205a]">Antony</label>
             <select [(ngModel)]="contactData.fait" name="fait"
-                    class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition">
                 <option value="fampahafantarana">Fampahafantarana</option>
                 <option value="fitorohana">Fitorohana</option>
                 <option value="fitoriana">Fitoriana</option>
@@ -75,27 +75,26 @@
             </div>
 
             <div class="sm:col-span-2">
-            <label class="block text-sm font-semibold text-gray-900">Zava-nitranga</label>
-            <textarea name="message" [(ngModel)]="contactData.message" rows="4"
-                        class="mt-2 block w-full border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"></textarea>
+            <label class="block text-sm font-semibold text-[#21205a]">Zava-nitranga</label>
+            <textarea name="message" [(ngModel)]="contactData.message" rows="5"
+                class="mt-2 block w-full border border-indigo-200 bg-white/70 px-3 py-2 rounded-lg focus:ring-2 focus:ring-[#21205a] focus:border-[#21205a] transition"></textarea>
             </div>
-
         </div>
 
         <button type="submit"
-                class="w-full bg-indigo-600 text-white py-3 font-semibold hover:bg-indigo-500 transition transform hover:scale-105">
+            class="w-full bg-gradient-to-r from-[#21205a]/90 to-[#36357a]/90 text-white py-3 font-semibold rounded-lg shadow-lg hover:scale-105 transform transition">
             Alefa
         </button>
         </form>
 
         <!-- Notification animée -->
         <div *ngIf="notificationMessage"
-            class="fixed inset-0 flex items-center justify-center z-50">
+        class="fixed inset-0 flex items-center justify-center z-50">
         <div
             [ngClass]="notificationType === 'success' ? 'bg-green-600' : 'bg-red-600'"
-            class="px-6 py-4 text-white text-lg animate-scale">
+            class="px-6 py-4 text-white text-lg animate-scale rounded-lg shadow-xl">
             {{ notificationMessage }}
         </div>
         </div>
     </div>
-</section>
+    </section>
