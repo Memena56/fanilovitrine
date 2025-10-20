@@ -19,12 +19,11 @@
         <button (click)="goToDashboardOrLogin()"
         class="hidden md:block absolute top-4 right-4 text-gray-400 hover:text-[#21205a] transition focus:outline-none"
         title="Admin Dashboard">
-        <svg xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-            d="M10.5 6h3M4.5 12h15m-7.5 6h3" />
-        </svg>
+            <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 4v1m0 14v1m8.66-6.66l-.71.71M4.05 4.05l.71.71M21 12h-1M4 12H3m2.34 6.66l-.71-.71M19.95 4.05l-.71.71M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
         </button>
 
         <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-8 animate-fade-up">
