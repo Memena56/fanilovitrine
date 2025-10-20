@@ -1,5 +1,7 @@
 .breadcrumb-modern {
     background: #ffe232;
+    background-image: url('/frontend/assets/trefle_breadcrum.png');
+    background-repeat: repeat;
     color: #21205a;
     padding: 1.25rem 1.5rem;
     font-family: 'Montserrat', 'Arial', sans-serif;
