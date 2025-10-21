@@ -20,7 +20,7 @@ export interface Contact {
   providedIn: 'root'
 })
 export class ContactService {
-  private baseApiUrl = environment.apiUrl;
+  private baseApiUrl = environment.apiUrl.replace(/\/$/, '');
   private contactsUrl = `${this.baseApiUrl}/contacts`;
 
   constructor(private http: HttpClient) {}

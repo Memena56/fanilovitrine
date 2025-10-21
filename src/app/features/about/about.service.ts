@@ -20,7 +20,7 @@ export interface Gouvernance {
 })
 
 export class AboutService {
-  private baseApiUrl = environment.apiUrl;
+  private baseApiUrl = environment.apiUrl.replace(/\/$/, '');
   private gouvernanceUrl = `${this.baseApiUrl}/gouvernance`;
 
   constructor(private http: HttpClient) { }

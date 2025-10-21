@@ -8,7 +8,8 @@ import { CategoryNode } from '../categories/category-node.model';
   providedIn: 'root'
 })
 export class CategoryService {
-  private baseUrl = `${environment.apiUrl}/categories`;
+  private baseApiUrl = environment.apiUrl.replace(/\/$/, '');
+  private baseUrl = `${this.baseApiUrl}/categories`;
 
   constructor(private http: HttpClient) { }
 

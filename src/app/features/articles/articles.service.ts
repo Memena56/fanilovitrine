@@ -34,8 +34,8 @@ export interface PaginatedArticlesResponse {
   providedIn: 'root',
 })
 export class ArticlesService {
-  private baseApiUrl = environment.apiUrl;
-  private shopsUrl = `${this.baseApiUrl}/shops`
+  private baseApiUrl = environment.apiUrl.replace(/\/$/, '');
+  private shopsUrl = `${this.baseApiUrl}/shops`;
 
   constructor(private http: HttpClient) {}
 

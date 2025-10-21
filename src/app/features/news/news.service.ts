@@ -19,8 +19,8 @@ export interface News {
   providedIn: 'root'
 })
 export class NewsService {
-  private baseApiUrl = environment.apiUrl;
-  private newsUrl = `${this.baseApiUrl}/news`
+  private baseApiUrl = environment.apiUrl.replace(/\/$/, '');
+  private newsUrl = `${this.baseApiUrl}/news`;
 
   constructor(private http: HttpClient) { }
 
