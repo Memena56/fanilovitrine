@@ -4,7 +4,7 @@ import { RedirectIfLoggedInGuard } from './core/redirect-if-logged-in.guard';
 
 export const routes: Routes = [
     { path: '', loadChildren: () => import('./features/home/home.routes').then(m => m.homeRoutes),
-        data: { title: 'Tongasoa'}
+        data: { title: 'Fanilon\'I Madagasikara'}
     },
     { path: 'mombamomba', loadChildren: () => import('./features/about/about.routes').then(m => m.aboutRoutes),
         data: { title: 'Momba anay'}
