@@ -16,13 +16,13 @@
             <button
                 type="button"
                 (click)="clearFilters()"
-                class="mt-2 text-sm text-indigo-200 hover:text-white hover:underline transition rounded px-2 py-1"
+                class="mt-2 text-sm text-indigo-200 hover:text-white hover:underline transition rounded px-2 py-1 cursor-pointer"
             >
             Fafàna ny sivana
             </button>
             <button
                 (click)="goToDashboardOrLogin()"
-                class="hidden md:block mt-5 px-4 py-2 bg-indigo-500 text-white rounded-lg font-medium shadow hover:bg-indigo-600 transition w-full text-center"
+                class="hidden md:block mt-5 px-4 py-2 bg-indigo-500 text-white rounded-lg font-medium shadow hover:bg-indigo-600 transition w-full text-center cursor-pointer"
             >
             Hampiditra vaovao
             </button>
@@ -54,14 +54,14 @@
         </ng-template>
         <!-- Pagination -->
         <div class="mt-10 flex flex-wrap justify-center items-center gap-4">
-            <button class="px-5 py-2 rounded-lg text-sm border border-indigo-500 text-indigo-600 hover:bg-indigo-100 disabled:opacity-40"
+            <button class="px-5 py-2 rounded-lg text-sm border border-indigo-500 text-indigo-600 hover:bg-indigo-100 disabled:opacity-40 cursor-pointer"
                     (click)="prevPage()" [disabled]="currentPage === 1">
             Taloha
             </button>
             <span class="text-sm font-medium text-gray-700 bg-indigo-100 rounded-full px-4 py-1 shadow">
             Pejy {{ currentPage }} / {{ totalPages }}
             </span>
-            <button class="px-5 py-2 rounded-lg text-sm border border-indigo-500 text-indigo-600 hover:bg-indigo-100 disabled:opacity-40"
+            <button class="px-5 py-2 rounded-lg text-sm border border-indigo-500 text-indigo-600 hover:bg-indigo-100 disabled:opacity-40 cursor-pointer"
                     (click)="nextPage()" [disabled]="currentPage === totalPages">
             Afara
             </button>
