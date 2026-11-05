@@ -23,7 +23,7 @@ jobs:
           npm install
 
       - name: Compiler application Angular pour la production
-        run: ng build --configuration production --base-href=/ --deploy-url=/frontend/
+        run: ng build --configuration production --base-href=/
         
       - name: Récupérer le nom du projet Angular (pour le dossier dist)
         id: get_app_name
