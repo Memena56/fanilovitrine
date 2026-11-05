@@ -1,6 +1,6 @@
 .breadcrumb-modern {
     background: #ffe232;
-    background-image: url('https://fanilonimadagasikara.mg/frontend/assets/trefle_breadcrum.png');
+    background-image: url('/assets/trefle_breadcrum.png');
     background-repeat: repeat;
     background-size: auto 200px;
     color: #21205a;
